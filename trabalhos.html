@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trabalhos · Jason Alves</title>
+<meta name="description" content="Portfólio de Jason Alves: reels, publicidade, filmes de marca, videoclipes e eventos.">
+<meta name="theme-color" content="#060606">
+<link rel="icon" type="image/png" href="/media/logo-dark.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jason Alves · Filmmaker">
+<meta property="og:description" content="Publicidade, reels, filmes de marca e videoclipes.">
+<meta property="og:image" content="/media/recanto-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Saira:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Jason Alves, início"><img src="/media/logo-light.png" alt="" width="40" height="32"><span>Jason Alves</span></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="/trabalhos" aria-current="page">Trabalhos</a><a href="/#servicos">Serviços</a><a href="/#processo">Como funciona</a><a href="/#contato">Contato</a>
+    </nav>
+    <a class="btn btn-red fx" href="/#contato">Pedir orçamento</a>
+  </div>
+</header>
+
+<main>
+<section class="page-head dark">
+  <div class="wrap">
+    <span class="eyebrow"><span class="rec" aria-hidden="true"></span>Portfólio</span>
+    <h1>Trabalhos</h1>
+    <p class="lead">Reels, publicidade, filmes de marca, videoclipes e eventos. Clique em um trabalho para assistir com som.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="filters-bar">
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por tipo"></div>
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+    <ul class="portfolio-grid" id="portfolio"></ul>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Quer um filme <em>assim?</em></h2>
+    <a class="btn btn-red fx" href="/#contato">Pedir orçamento
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+</main>
+
+<footer class="foot dark">
+  <div class="wrap">
+    <div class="foot-top">
+      <img src="/media/logo-light.png" alt="Jason Alves" width="40" height="32">
+      <nav aria-label="Rodapé"><a href="/trabalhos">Trabalhos</a><a href="/#servicos">Serviços</a><a href="/#processo">Como funciona</a><a href="/#duvidas">Dúvidas</a><a href="/#contato">Contato</a></nav>
+      <small>© <span id="year">2026</span> Jason Alves · Filmmaker</small>
+    </div>
+    <div class="foot-contact">
+      <span>Contato</span>
+      <a href="mailto:contato@jasonalves.com.br">contato@jasonalves.com.br</a>
+      <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" data-wa="Olá, Jason! Vim pelo site e quero um orçamento.">WhatsApp</a>
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <span class="wordmark" id="wordmark" aria-hidden="true">Jason Alves<i>.</i></span>
+  </div>
+</footer>
+
+<a class="mbar" id="mbar" href="https://wa.me/5511999999999" target="_blank" rel="noopener" data-wa="Olá, Jason! Vim pelo site e quero um orçamento.">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19.2L4 20Z"/><path d="M9 8.6c0 3.3 3 6.4 6.4 6.4l1-1.6-2-1-.9.9c-1-.4-2.4-1.8-2.8-2.8l.9-.9-1-2-1.6 1Z" fill="currentColor" stroke="none"/></svg>
+  Pedir orçamento no WhatsApp</a>
+
+<dialog class="player" id="player" aria-label="Player de vídeo">
+  <video id="playerVideo" controls playsinline preload="none"></video>
+  <div class="player-bar"><span id="playerTitle"></span><button type="button" id="playerClose">Fechar</button></div>
+</dialog>
+
+<script src="/assets/trabalhos.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

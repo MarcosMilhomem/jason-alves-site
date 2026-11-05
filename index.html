@@ -3,562 +3,327 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jason Alves · Filmmaker</title>
+<meta name="description" content="Jason Alves, filmmaker. Publicidade, reels, filmes de marca e videoclipes, do roteiro ao arquivo final.">
 <meta name="theme-color" content="#060606">
 <link rel="icon" type="image/png" href="/media/logo-dark.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Jason Alves — Filmmaker">
+<meta property="og:title" content="Jason Alves · Filmmaker">
 <meta property="og:description" content="Publicidade, reels, filmes de marca e videoclipes.">
 <meta property="og:image" content="/media/recanto-poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<title>Jason Alves Filmes</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Jason Alves — filmmaker. Publicidade, reels, filmes de marca e videoclipes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Saira:ital,wght@0,300;0,400;0,500;0,600;1,500;1,600;1,700&family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Saira:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap">
 <style>
-/* Brand: Jason Alves — black #000, red #FF1620. Display: Michroma (stand-in for Conthrax), accent italic: Saira (stand-in for Spantaran).
-   Layout: white gallery wall with dark "screening room" bands where the image lives (hero, reel, process, end). Lots of air, one idea per screen. */
+/* Jason Alves — versão estática. Uma ideia por faixa, leitura de outdoor: o que faz, para quem, como pedir.
+   Marca: preto #060606, vermelho #FF1620. Títulos Michroma (no lugar da Conthrax), texto Saira (no lugar da Spantaran). */
 :root{
-  --paper:#f5f5f4;     /* gallery white, neutral */
-  --ink:#060606;       /* brand black */
-  --stone:#75726c;     /* secondary text on paper */
-  --ash:#8f8c86;       /* secondary text on ink */
-  --rec:#ff1620;       /* brand red — the REC dot in the logo */
-  --f-sans:'Saira','Helvetica Neue',Arial,sans-serif;
+  --ink:#060606; --ink-2:#141414; --paper:#f5f5f4; --white:#ffffff;
+  --stone:#5f5c57; --ash:#a19e97; --red:#ff1620;
+  --line-dark:rgba(245,245,244,.14); --line-light:rgba(6,6,6,.12);
   --f-display:'Michroma','Eurostile','Arial Black',sans-serif;
-  --f-mono:'Saira','Helvetica Neue',Arial,sans-serif;  /* no monospace: labels share the body face */
-  --pad:clamp(16px,4vw,64px);
-  --gl:max(var(--pad), env(safe-area-inset-left,0px));
-  --gr:max(var(--pad), env(safe-area-inset-right,0px));
-  --ease:cubic-bezier(.7,0,.2,1);
-  --bg:var(--paper); --fg:var(--ink); --muted:var(--stone); --rule:rgba(13,13,12,.12);
+  --f-body:'Saira','Helvetica Neue',Arial,sans-serif;
+  --max:1240px; --pad:clamp(16px,4vw,40px);
   color-scheme:light;
 }
-.dark{--bg:var(--ink); --fg:var(--paper); --muted:var(--ash); --rule:rgba(246,246,244,.14); background:var(--bg); color:var(--fg)}
 *{box-sizing:border-box}
-html,body{background:var(--paper);color:var(--ink)}
-body{font-family:var(--f-sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body.is-loading{overflow:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:76px;background:var(--ink)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
-:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}
-::selection{background:var(--ink);color:var(--paper)}
-section{background:var(--bg);color:var(--fg)}
-.wrap{padding-left:var(--gl);padding-right:var(--gr)}
-.label{font-family:var(--f-sans);font-size:14px;font-weight:400;letter-spacing:.005em;color:var(--muted);font-variant-numeric:tabular-nums}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--rec);vertical-align:middle;margin-right:8px}
-.blink{animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-em{font-family:var(--f-sans);font-style:italic;font-weight:600;color:var(--rec);letter-spacing:-.01em}
-.h-xl{margin:0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(34px,5.6vw,104px);line-height:1;letter-spacing:-.02em;text-wrap:balance}
-.h-xl em{font-size:1.12em;letter-spacing:-.02em}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-left:max(var(--pad),env(safe-area-inset-left,0px));padding-right:max(var(--pad),env(safe-area-inset-right,0px))}
+.dark{background:var(--ink);color:var(--paper)}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;letter-spacing:.02em;color:var(--ash)}
+.rec{width:8px;height:8px;border-radius:50%;background:var(--red);flex:none}
+h1,h2,h3{margin:0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
+h2{font-size:clamp(28px,3.6vw,48px);line-height:1.1}
+em{font-family:var(--f-body);font-style:italic;font-weight:600;color:var(--red);letter-spacing:0}
+.lead{margin:0;font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:48ch}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:100px;font-weight:600;font-size:16px;border:1px solid transparent;transition:background-color .2s,color .2s,border-color .2s}
+.btn svg{width:16px;height:16px}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#d90f18}
+.btn-ghost{border-color:currentColor}
+.dark .btn-ghost:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+.sec-head p{margin:0;max-width:44ch;color:var(--stone)}
+.dark .sec-head p{color:var(--ash)}
+section{padding-block:clamp(64px,9vw,112px)}
 
-.grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.035}
-@keyframes grain{0%,100%{transform:translate(0,0)}25%{transform:translate(-5%,4%)}50%{transform:translate(4%,-6%)}75%{transform:translate(-3%,5%)}}
-
-/* Cursor: autofocus box */
-.cursor{position:fixed;left:0;top:0;z-index:100;pointer-events:none;width:10px;height:10px;margin:-5px 0 0 -5px;mix-blend-mode:difference;transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease)}
-.cursor b{position:absolute;inset:0;border-radius:50%;background:#fff;transition:opacity .2s}
-.cursor i{position:absolute;width:11px;height:11px;border:0 solid #fff;opacity:0;transition:opacity .2s,transform .3s var(--ease),border-color .15s;filter:drop-shadow(0 0 1px rgba(0,0,0,.7))}
-.cursor i:nth-child(1){left:0;top:0;border-left-width:2px;border-top-width:2px}
-.cursor i:nth-child(2){right:0;top:0;border-right-width:2px;border-top-width:2px}
-.cursor i:nth-child(3){left:0;bottom:0;border-left-width:2px;border-bottom-width:2px}
-.cursor i:nth-child(4){right:0;bottom:0;border-right-width:2px;border-bottom-width:2px}
-.cursor span{position:absolute;left:50%;top:calc(100% + 10px);transform:translateX(-50%);font:500 13px var(--f-sans);color:#fff;opacity:0;white-space:nowrap;text-shadow:0 1px 8px rgba(0,0,0,.6);transition:opacity .2s}
-.cursor.af{width:60px;height:44px;margin:-22px 0 0 -30px;mix-blend-mode:normal}
-.cursor.af b{opacity:0}
-.cursor.af i,.cursor.af span{opacity:1}
-.cursor.hunt i{transform:scale(1.25)}
-.cursor.lock i{border-color:#35e06f}
-@media (hover:none){.cursor{display:none}}
-
-/* Loader: iris */
-.loader{position:fixed;inset:0;z-index:95;pointer-events:none}
-.loader svg{position:absolute;inset:0;width:100%;height:100%}
-.blade{fill:url(#bladeGrad);stroke:#34322e;stroke-width:.3}
-.loader-center{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px}
-.loader-logo{width:min(132px,32vw);height:auto;display:block}
-.loader-rec{display:flex;align-items:center;gap:10px;color:var(--paper);font-size:14px;font-variant-numeric:tabular-nums}
-.loader-bar{width:min(220px,50vw);height:1px;background:rgba(245,245,244,.18);overflow:hidden}
-.loader-bar b{display:block;height:100%;background:var(--rec);transform:scaleX(0);transform-origin:left}
-
-/* Nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:calc(18px + env(safe-area-inset-top,0px)) var(--gr) 18px var(--gl);color:#fff;transition:color .35s}
-.nav.on-light{color:var(--ink)}
-.nav::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .35s,background-color .35s;background:rgba(6,6,6,.82)}
-.nav.scrolled::before{opacity:1}
-.nav.on-light::before{background:rgba(245,245,244,.94)}
+/* Header */
+.top{position:sticky;top:0;z-index:20;background:var(--ink);color:var(--paper);border-bottom:1px solid var(--line-dark);padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
 .brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
-.brand img{height:34px;width:auto;display:block}
-.nav .logo-dark,.nav.on-light .logo-light{display:none}.nav.on-light .logo-dark{display:block}
-.nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0;font-size:14px}
-.roll{display:inline-block;overflow:hidden;height:1.3em;line-height:1.3em;vertical-align:bottom}
-.roll>span{display:block;transition:transform .5s var(--ease)}
-.roll>span::after{content:attr(data-t);display:block}
-a:hover .roll>span{transform:translateY(-1.3em)}
-.nav .cta{font-size:14px}
-@media (max-width:820px){.nav ul{display:none}}
-
-.footage{position:absolute;inset:0;overflow:hidden;background:#050505}
-.footage canvas,.footage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.brand img{height:32px;width:auto}
+.menu{display:flex;gap:28px;font-size:15px}
+.menu a{color:var(--ash);transition:color .2s}
+.menu a:hover{color:var(--paper)}
+.top .btn{min-height:42px;padding:0 20px;font-size:15px}
+@media (max-width:820px){.menu{display:none}}
+@media (max-width:520px){.brand span{display:none}.top .btn{white-space:nowrap;padding:0 16px;font-size:14px}}
 
 /* Hero */
-.hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;background:var(--ink)}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:.85}
-.hero-meta{position:absolute;left:0;right:0;top:calc(104px + env(safe-area-inset-top,0px));z-index:3;display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
-.hero-meta .label{text-align:right;color:rgba(245,245,244,.7);line-height:1.7}
-.hero-frame{--fh:min(58vh,620px);position:absolute;left:50%;top:15vh;z-index:2;height:var(--fh);width:calc(var(--fh) * 9 / 16);margin-left:calc(var(--fh) * -9 / 32);overflow:hidden;border-radius:4px;box-shadow:0 40px 120px -20px rgba(0,0,0,.7)}
-.hero-frame .open{position:absolute;inset:0;z-index:4}
-.hero-name{position:absolute;left:0;right:0;bottom:0;z-index:1;margin:0 0 -.1em;padding-left:var(--gl);padding-right:var(--gr);line-height:.8;pointer-events:none}
-.hero-fit{display:inline-block;font-family:var(--f-display);font-weight:400;text-transform:uppercase;white-space:nowrap;letter-spacing:-.035em;color:var(--paper);font-size:14vw;line-height:.84}
-.hero-fit i{font-style:normal;color:var(--rec)}
-.hud{position:absolute;inset:14px;pointer-events:none;z-index:3}
-.hud .c{position:absolute;width:18px;height:18px;border:0 solid rgba(245,245,244,.8)}
-.hud .tl{left:0;top:0;border-left-width:1px;border-top-width:1px}
-.hud .tr{right:0;top:0;border-right-width:1px;border-top-width:1px}
-.hud .bl{left:0;bottom:0;border-left-width:1px;border-bottom-width:1px}
-.hud .br{right:0;bottom:0;border-right-width:1px;border-bottom-width:1px}
-.hud .rec{position:absolute;left:26px;top:0;color:var(--paper);font-size:13px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
-.hero-claim{margin:0;max-width:260px;font-style:italic;font-weight:500;font-size:clamp(17px,1.4vw,22px);line-height:1.2;color:var(--paper)}
-@media (max-width:700px){
-  .hero-meta .label{display:none}
-  .hero-frame{--fh:min(50vh,460px);top:calc(170px + env(safe-area-inset-top,0px))}
+.hero{padding-block:clamp(48px,7vw,96px) clamp(64px,8vw,104px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(32px,6vw,80px);align-items:center}
+.hero h1{font-size:clamp(32px,4.6vw,62px);line-height:1.08;margin:22px 0 24px}
+.hero h1 em{font-size:1.08em}
+.hero .lead{color:#d4d1ca}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.for{margin-top:40px;padding-top:24px;border-top:1px solid var(--line-dark)}
+.for span{display:block;font-size:14px;color:var(--ash);margin-bottom:12px}
+.chips-static{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips-static li{border:1px solid var(--line-dark);border-radius:100px;padding:6px 14px;font-size:14px;color:#d4d1ca}
+.reel{margin:0;justify-self:end;width:min(100%,340px)}
+.reel-frame{position:relative;aspect-ratio:9/16;border-radius:6px;overflow:hidden;background:#111}
+.reel-frame video{width:100%;height:100%;object-fit:cover}
+.reel-play{position:absolute;left:12px;right:12px;bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;border-radius:100px;background:rgba(6,6,6,.72);color:#fff;font-weight:600;font-size:15px;transition:background-color .2s}
+.reel-play:hover{background:var(--red)}
+.reel-play svg{width:14px;height:14px}
+.reel figcaption{margin-top:12px;font-size:14px;color:var(--ash)}
+.reel figcaption b{color:var(--paper);font-weight:500}
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:1fr}
+  .reel{justify-self:start;width:min(78vw,320px)}
 }
-
-/* Manifesto */
-.manifesto{padding-block:clamp(140px,22vh,260px)}
-.manifesto-text{margin:0;max-width:19ch;font-weight:400;font-size:clamp(36px,5.4vw,96px);line-height:1.02;letter-spacing:-.035em;text-wrap:balance}
-.manifesto-text .w{display:inline-block}
-.manifesto-sub{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-top:72px;align-items:flex-end}
-.manifesto-sub p{margin:0;max-width:44ch;color:var(--muted);font-size:17px}
-
-/* Showreel */
-.reel{position:relative;height:100vh;height:100svh;overflow:hidden;transition:background-color .4s}
-.reel-frame{position:absolute;inset:0;z-index:3;clip-path:inset(50% 50%);visibility:hidden;will-change:clip-path}
-.reel-head{position:absolute;left:0;right:0;top:calc(96px + env(safe-area-inset-top,0px));z-index:1;display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
-.reel-head .label{max-width:30ch}
-.reel-title{position:absolute;left:0;right:0;top:75%;z-index:1;text-align:center;font-family:var(--f-display);text-transform:uppercase;font-size:clamp(30px,6.2vw,118px);line-height:1;letter-spacing:-.02em;pointer-events:none}
-.reel-title em{font-size:1.1em}
-.wheel{position:absolute;left:50%;top:0;width:0;height:0;z-index:2;will-change:transform}
-.wcard{position:absolute;left:0;top:0;overflow:hidden;border-radius:8px;background:#111;box-shadow:0 30px 60px -20px rgba(0,0,0,.35)}
-.wcard .footage,.wcard canvas.mirror{position:absolute;inset:0;width:100%;height:100%}
-.wcard .wtag{position:absolute;left:10px;bottom:8px;z-index:2;color:#fff;font-size:12px;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.wcard.feat{box-shadow:0 40px 80px -24px rgba(0,0,0,.5)}
-.card-af{position:absolute;inset:10px;z-index:3;pointer-events:none;opacity:0}
-.card-af i{position:absolute;width:14px;height:14px;border:0 solid #fff;transition:border-color .15s}
-.card-af i:nth-child(1){left:0;top:0;border-left-width:2px;border-top-width:2px}
-.card-af i:nth-child(2){right:0;top:0;border-right-width:2px;border-top-width:2px}
-.card-af i:nth-child(3){left:0;bottom:0;border-left-width:2px;border-bottom-width:2px}
-.card-af i:nth-child(4){right:0;bottom:0;border-right-width:2px;border-bottom-width:2px}
-.card-af.lock i{border-color:#35e06f}
-.reel-label{position:absolute;left:0;right:0;bottom:28px;z-index:4;display:flex;justify-content:space-between;padding:0 var(--gr) env(safe-area-inset-bottom,0px) var(--gl);pointer-events:none}
-.reel-label .label{color:var(--fg);transition:color .4s}
-.letterbox{position:absolute;left:0;right:0;height:calc((100% - 100vw / 2.39) / 2);background:#000;z-index:2;transform:scaleY(0)}
-.letterbox.t{top:0;transform-origin:top}.letterbox.b{bottom:0;transform-origin:bottom}
-@media (max-width:700px){.letterbox{display:none}}
-.reel-cta{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;opacity:0;pointer-events:none}
-.reel-cta.on{pointer-events:auto}
-.play-btn{width:112px;height:112px;border-radius:50%;border:1px solid rgba(246,246,244,.7);display:grid;place-items:center;color:var(--paper);transition:background .35s,color .35s}
-.play-btn:hover{background:var(--paper);color:var(--ink)}
-.play-btn svg{width:22px;height:22px;margin-left:3px}
 
 /* Works */
-.works-head{padding-block:clamp(120px,18vh,220px) 64px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
-.works-head .label{max-width:30ch;text-transform:none;letter-spacing:0;font-family:var(--f-sans);font-size:16px}
-.works-pin{position:relative;height:100vh;height:100svh;display:flex;align-items:center;overflow:hidden}
-.track{display:flex;align-items:flex-start;gap:clamp(20px,2.4vw,40px);padding-left:var(--gl);padding-right:var(--gr);width:max-content;will-change:transform}
-.frame{flex:none;width:min(58vw,940px);display:flex;flex-direction:column;gap:18px}
-.frame-media{position:relative;aspect-ratio:16/9;max-width:100%;overflow:hidden;background:#111}
-.frame-media{transform-origin:50% 50%;will-change:transform,filter}
-.frame-media .footage{left:-8%;right:-8%;filter:grayscale(1) contrast(1.05);transition:filter .8s var(--ease)}
-.frame:hover .frame-media .footage,.frame:focus-within .frame-media .footage{filter:none}
-.frame-media .open{position:absolute;inset:0;z-index:3}
-.frame-info{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
-.frame-info h3{margin:0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(15px,1.4vw,22px);letter-spacing:0;line-height:1.2}
-.frame.v{width:calc(min(64vh, 660px) * 9 / 16)}
-.frame.v .frame-media{aspect-ratio:9/16}
-.frame.v .frame-info{flex-direction:column;align-items:flex-start;gap:6px}
-.frame .tag{position:absolute;left:12px;top:10px;z-index:2;color:var(--paper)}
-.frame-end{flex:none;width:min(36vw,520px);display:flex;flex-direction:column;justify-content:center;gap:28px}
-.frame-end p{margin:0;font-size:clamp(26px,2.6vw,42px);line-height:1.08;letter-spacing:-.03em}
-@media (max-width:899px){
-  .works-pin{height:auto;display:block;padding-bottom:40px}
-  .track{overflow-x:auto;width:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
-  .track::-webkit-scrollbar{display:none}
-  .frame{width:84vw;scroll-snap-align:center}
-  .frame.v{width:64vw}
-  .frame-end{width:70vw}
-}
-
-/* Clients */
-.clients{padding-block:56px;overflow:hidden;border-top:1px solid var(--rule)}
-.marquee{display:flex;width:max-content}
-.marquee-set{display:flex;align-items:center;gap:64px;padding-right:64px}
-.marquee-set span{font-size:clamp(22px,2.4vw,36px);letter-spacing:-.03em;white-space:nowrap;color:var(--muted)}
-
-/* Process: slate → storyboard → viewfinder → edit timeline */
-.process{position:relative;height:100vh;height:100svh;min-height:600px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:center;gap:6vw;overflow:hidden;padding-top:60px}
-.process>.label{position:absolute;top:calc(96px + env(safe-area-inset-top,0px));left:var(--gl)}
-.stage{position:relative;width:100%;aspect-ratio:16/10;max-width:100%}
-.stage .slate{position:absolute;left:50%;top:50%;width:76%;height:auto;transform:translate(-50%,-50%);overflow:visible}
-.slate .stick{transform-origin:6px 64px;transform-box:view-box}
-.slate text{font-family:var(--f-mono);fill:var(--paper)}
-.slate .lbl{font-size:9px;letter-spacing:1.5px;fill:var(--ash)}
-.slate .chalk{font-family:var(--f-sans);font-weight:600;font-size:26px;letter-spacing:-.3px}
-.slate .chalk.sm{font-size:18px}
-.iris3d{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
-.slate3d{position:absolute;left:-12%;top:-14%;width:124%;height:128%;pointer-events:none;z-index:1}
-.flash{position:fixed;inset:0;background:var(--paper);z-index:85;pointer-events:none;opacity:0}
-.board{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-content:center}
-.panel{margin:0;display:flex;flex-direction:column;gap:10px}
-.panel svg{display:block;width:100%;aspect-ratio:16/9;max-width:100%;border:1px solid rgba(246,246,244,.35);background:rgba(246,246,244,.03)}
-.panel .ink{fill:none;stroke:var(--paper);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
-.panel .ink.soft{stroke:rgba(246,246,244,.45);stroke-width:.8}
-.panel text{font-family:var(--f-sans);font-size:6.5px;fill:var(--ash)}
-.shot{position:absolute;inset:0;visibility:hidden;clip-path:inset(50% 50% 50% 50%)}
-.shot .footage{filter:saturate(.3) contrast(.7) brightness(1.15)}
-.shot .footage video{object-position:50% 26%}
-.shot .vf{position:absolute;top:3%;right:2.2%;bottom:3%;left:2.2%;z-index:2;pointer-events:none}
-.shot .vf i{position:absolute;width:16px;height:16px;border:0 solid rgba(246,246,244,.8)}
-.shot .vf i:nth-child(1){left:0;top:0;border-left-width:1px;border-top-width:1px}
-.shot .vf i:nth-child(2){right:0;top:0;border-right-width:1px;border-top-width:1px}
-.shot .vf i:nth-child(3){left:0;bottom:0;border-left-width:1px;border-bottom-width:1px}
-.shot .vf i:nth-child(4){right:0;bottom:0;border-right-width:1px;border-bottom-width:1px}
-.shot .vf .label{position:absolute;color:var(--paper);top:2px}
-.shot .vf .l{left:26px}.shot .vf .r{right:26px}
-.tl{position:absolute;left:0;right:0;bottom:0;height:35%;display:flex;flex-direction:column;justify-content:flex-end;gap:5px}
-.trk{display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;gap:8px}
-.trk>b{font-size:11px;font-weight:500;color:var(--ash)}
-.lane{position:relative;height:22px;background:rgba(246,246,244,.05);overflow:hidden}
-.lane i{position:absolute;top:2px;bottom:2px;border-radius:2px}
-.trk.a .lane{height:16px}
-.trk.a .lane i{background:repeating-linear-gradient(90deg,rgba(246,246,244,.55) 0 1px,transparent 1px 3px);-webkit-mask:linear-gradient(transparent 20%,#000 50%,transparent 80%);mask:linear-gradient(transparent 20%,#000 50%,transparent 80%)}
-.ruler{display:flex;justify-content:space-between;padding-left:38px;font-size:11px;color:var(--ash);font-variant-numeric:tabular-nums}
-.ph-wrap{position:absolute;left:38px;right:0;top:14px;bottom:0;pointer-events:none}
-.playhead{position:absolute;top:0;bottom:0;left:0;width:1px;background:var(--rec)}
-.playhead::before{content:"";position:absolute;top:-5px;left:-4px;border:4.5px solid transparent;border-top:6px solid var(--rec)}
-.steps{position:relative;min-height:340px}
-.step{position:absolute;inset:0;display:flex;flex-direction:column;gap:24px;justify-content:center}
-.step h3{margin:0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(26px,3.2vw,56px);line-height:1.05;letter-spacing:-.01em}
-.step p{margin:0;max-width:40ch;font-size:18px;color:var(--muted)}
-.step-bar{position:absolute;left:0;right:0;bottom:0;display:flex;gap:6px}
-.step-bar i{height:1px;flex:1;background:var(--rule);position:relative;overflow:hidden}
-.step-bar i b{position:absolute;inset:0;background:var(--fg);transform:scaleX(0);transform-origin:left}
-@media (max-width:899px){
-  .process{grid-template-columns:1fr;align-content:center;gap:28px;padding-top:110px}
-  .process>.label{top:calc(76px + env(safe-area-inset-top,0px))}
-  .board{gap:6px}.panel figcaption,.panel text{display:none}
-  .steps{min-height:230px}.step{gap:14px;justify-content:flex-start}.step p{font-size:16px}.step-bar{bottom:-8px}
-}
+.works-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px);list-style:none;margin:0;padding:0}
+.work{display:flex;flex-direction:column;gap:14px}
+.work-media{position:relative;display:block;width:100%;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:#ddd;text-align:left}
+.work-media img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;left:12px;top:12px;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:100px;font-size:13px;font-weight:600;background:rgba(6,6,6,.72);color:#fff}
+.badge svg{width:11px;height:11px}
+.badge.soon{background:rgba(245,245,244,.9);color:var(--stone);font-weight:500}
+button.work-media{transition:box-shadow .2s}
+button.work-media:hover{box-shadow:0 0 0 3px var(--red)}
+.work h3{font-size:15px;line-height:1.3}
+.work p{margin:4px 0 0;font-size:15px;color:var(--stone)}
+@media (max-width:820px){.works-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* Services */
-.services{padding-block:clamp(120px,18vh,220px)}
-.services .h-xl{margin-bottom:64px}
-.svc{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
-.svc li{border-bottom:1px solid var(--rule)}
-.svc a{position:relative;display:flex;justify-content:space-between;align-items:center;gap:24px;padding-block:clamp(22px,2.6vw,36px)}
-.svc a::before{content:"";position:absolute;inset:0;background:var(--rec);transform:scaleY(0);transform-origin:bottom;transition:transform .55s var(--ease)}
-.svc a:hover::before{transform:scaleY(1);transform-origin:top}
-.svc a>*{position:relative;transition:color .4s,transform .55s var(--ease)}
-.svc a:hover>*{color:#fff}
-.svc a:hover .svc-t{transform:translateX(16px)}
-.svc a:hover .label{transform:translateX(-16px)}
-.svc-t{font-family:var(--f-display);text-transform:uppercase;font-size:clamp(20px,3.3vw,56px);line-height:1.1;letter-spacing:-.01em}
-.preview{position:fixed;left:0;top:0;z-index:70;width:min(26vw,360px);aspect-ratio:4/5;max-width:100%;pointer-events:none;overflow:hidden;opacity:0;transform:scale(.6)}
-@media (hover:none){.preview{display:none}}
+.svc{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-dark)}
+.svc li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) auto;gap:clamp(16px,3vw,48px);align-items:baseline;padding-block:clamp(22px,2.6vw,32px);border-bottom:1px solid var(--line-dark)}
+.svc h3{font-size:clamp(18px,1.9vw,26px);line-height:1.2}
+.svc p{margin:0;color:#d4d1ca}
+.svc span{font-size:14px;color:var(--ash);white-space:nowrap}
+@media (max-width:820px){.svc li{grid-template-columns:1fr;gap:8px}.svc span{white-space:normal}}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);list-style:none;margin:0;padding:0;counter-reset:step}
+.steps li{border-top:2px solid var(--ink);padding-top:22px}
+.steps .n{display:block;font-family:var(--f-display);font-size:14px;color:var(--red);margin-bottom:14px}
+.steps h3{font-size:clamp(18px,1.7vw,22px);margin-bottom:12px}
+.steps p{margin:0;color:var(--stone)}
+@media (max-width:820px){.steps{grid-template-columns:1fr}}
+
+/* Segments band */
+.band{background:var(--red);color:#fff;padding-block:clamp(48px,7vw,88px)}
+.band .eyebrow{color:rgba(255,255,255,.85)}
+.band ul{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 0;font-family:var(--f-display);text-transform:uppercase;font-size:clamp(22px,3.4vw,46px);line-height:1.25}
+.band li:not(:last-child)::after{content:"·";margin:0 .45em;opacity:.55}
 
 /* Contact */
-.contact{padding-block:clamp(120px,18vh,220px) clamp(100px,14vh,160px);border-top:1px solid var(--rule)}
-.contact .h-xl{font-size:clamp(44px,8.4vw,156px);margin-bottom:80px}
-.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(48px,7vw,120px)}
-.contact-info{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
-.mail{font-size:clamp(24px,2.6vw,40px);letter-spacing:-.035em;user-select:all;word-break:break-word}
-.copy,.rewind,.lb-close{border-bottom:1px solid currentColor;padding-bottom:2px;font-size:14px}
-.socials{display:flex;flex-direction:column;width:100%;margin-top:28px;border-top:1px solid var(--rule)}
-.soc{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px;padding:16px 4px;border-bottom:1px solid var(--rule);overflow:hidden;isolation:isolate}
-.soc::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--rec);transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease)}
-.soc:hover::before,.soc:focus-visible::before{transform:scaleY(1);transform-origin:top}
-.soc .ic{width:44px;height:44px;border-radius:50%;border:1px solid var(--rule);display:grid;place-items:center;transition:border-color .4s,background-color .4s}
-.soc .ic svg{width:20px;height:20px}
-.soc b{display:block;font-weight:500;font-size:18px;line-height:1.2}
-.soc small{display:block;font-size:14px;color:var(--muted);transition:color .4s}
-.soc .arr{width:22px;height:22px;transition:transform .5s var(--ease)}
-.soc:hover,.soc:focus-visible{color:#fff}
-.soc:hover small,.soc:focus-visible small{color:rgba(255,255,255,.85)}
-.soc:hover .ic{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.12)}
-.soc:hover .arr{transform:rotate(45deg)}
-form.brief{display:flex;flex-direction:column;gap:32px}
-.field{display:flex;flex-direction:column;gap:12px;border:0;margin:0;padding:0;min-width:0}
-.field input,.field textarea{background:transparent;border:0;border-bottom:1px solid var(--rule);color:var(--fg);font:inherit;font-size:20px;padding:8px 0;border-radius:0;transition:border-color .3s}
-.field input:focus,.field textarea:focus{outline:none;border-bottom-color:var(--fg)}
-.field textarea{resize:vertical;min-height:84px}
-.field legend{padding:0;margin-bottom:12px}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(40px,6vw,96px)}
+.contact h2{font-size:clamp(36px,5vw,72px);line-height:1.05;margin-bottom:20px}
+.contact .lead{color:var(--stone)}
+.mail-row{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;margin-top:28px}
+.mail{font-size:clamp(20px,2vw,26px);font-weight:500;user-select:all;word-break:break-word}
+.copy{font-size:15px;border-bottom:1px solid currentColor}
+.socials{list-style:none;margin:32px 0 0;padding:0;border-top:1px solid var(--line-light)}
+.socials a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px;padding:14px 2px;border-bottom:1px solid var(--line-light);transition:color .2s}
+.socials a:hover{color:var(--red)}
+.socials .ic{width:40px;height:40px;border-radius:50%;border:1px solid var(--line-light);display:grid;place-items:center}
+.socials .ic svg{width:18px;height:18px}
+.socials b{font-weight:500}
+.socials small{display:block;font-size:14px;color:var(--stone)}
+.socials .arr{width:18px;height:18px}
+form.brief{display:flex;flex-direction:column;gap:26px}
+.field{display:flex;flex-direction:column;gap:10px;border:0;margin:0;padding:0;min-width:0}
+.field label,.field legend{font-size:14px;font-weight:500;color:var(--stone);padding:0}
+.field legend{margin-bottom:10px}
+.field input,.field textarea{background:var(--white);border:1px solid var(--line-light);border-radius:8px;color:var(--ink);font:inherit;font-size:17px;padding:12px 14px;transition:border-color .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
+.field textarea{resize:vertical;min-height:110px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips input{position:absolute;opacity:0;pointer-events:none}
-.chips label{border:1px solid var(--rule);border-radius:100px;padding:9px 16px;cursor:pointer;font-size:15px;transition:background .25s,color .25s,border-color .25s}
-.chips input:checked+label{background:var(--rec);color:#fff;border-color:var(--rec)}
-.chips input:focus-visible+label{outline:1.5px solid var(--ink);outline-offset:3px}
-.send{display:inline-flex;align-items:center;gap:14px;align-self:flex-start;background:var(--rec);color:var(--paper);padding:20px 30px;border-radius:100px;font-size:16px}
-.send svg{width:16px;height:16px}
-@media (max-width:820px){.contact-grid{grid-template-columns:1fr}}
+.chips label{border:1px solid var(--line-light);background:var(--white);border-radius:100px;padding:8px 15px;cursor:pointer;font-size:15px;font-weight:400;color:var(--ink);transition:background-color .2s,color .2s,border-color .2s}
+.chips input:checked+label{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chips input:focus-visible+label{outline:2px solid var(--red);outline-offset:3px}
+.brief .btn{align-self:flex-start}
+.note{margin:-10px 0 0;font-size:14px;color:var(--stone)}
+@media (max-width:820px){.contact .wrap{grid-template-columns:1fr}}
 
-/* Outro: iris closes */
-.footer{position:relative;overflow:hidden;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;padding-top:clamp(110px,15vh,180px)}
-.ft-top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:start}
-.ft-cta{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
-.ft-big{font-family:var(--f-display);text-transform:uppercase;font-size:clamp(26px,3.8vw,62px);line-height:1.08;letter-spacing:-.01em;transition:color .3s}
-.ft-big:hover{color:var(--rec)}
-.ft-big:hover em{color:var(--paper)}
-.ft-cols{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr) minmax(0,.8fr);gap:24px}
-.ft-cols div{display:flex;flex-direction:column;gap:12px;min-width:0}
-.ft-cols .label{margin-bottom:6px}
-.ft-cols a,.ft-cols span.sel{font-size:16px;width:fit-content;max-width:100%;overflow-wrap:break-word;transition:color .25s}
-.ft-cols a:hover{color:var(--rec)}
-.ft-cols span.sel{user-select:all}
-.ft-mid{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:clamp(72px,10vh,120px);padding-top:22px;border-top:1px solid var(--rule)}
-.ft-mid img{height:30px;width:auto}
-.ft-name{padding-left:var(--gl);padding-right:var(--gr);margin-top:clamp(28px,4vw,56px);margin-bottom:-.13em;pointer-events:auto}
-.ft-fit{display:inline-block;font-family:var(--f-display);font-weight:400;text-transform:uppercase;white-space:nowrap;line-height:.84;letter-spacing:-.035em;color:var(--paper);font-size:15vw}
-.ft-fit i{font-style:normal;color:var(--rec)}
-.ft-fit .ch{display:inline-block;will-change:transform}
-@media (max-width:820px){.ft-top{grid-template-columns:1fr}.ft-cols{grid-template-columns:repeat(2,minmax(0,1fr))}.ft-cols div:nth-child(2){grid-column:1/-1;order:3}}
+/* Footer */
+.foot{padding-block:clamp(48px,6vw,72px) calc(clamp(24px,4vw,48px) + env(safe-area-inset-bottom,0px));overflow:hidden}
+.foot-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--line-dark)}
+.foot-top img{height:32px;width:auto}
+.foot-top nav{display:flex;gap:22px;flex-wrap:wrap;font-size:15px;color:var(--ash)}
+.foot-top nav a:hover{color:var(--paper)}
+.foot-top small{font-size:14px;color:var(--ash)}
+.wordmark{display:block;margin-top:clamp(20px,3vw,36px);margin-bottom:0;font-family:var(--f-display);text-transform:uppercase;white-space:nowrap;line-height:.84;letter-spacing:-.035em;font-size:12vw}
+.wordmark i{font-style:normal;color:var(--red)}
 
-/* Lightbox */
-.lb{position:fixed;inset:0;z-index:92;background:#000;color:var(--paper)}
-.lb-hud{position:absolute;inset:0;padding:calc(24px + env(safe-area-inset-top,0px)) var(--gr) calc(24px + env(safe-area-inset-bottom,0px)) var(--gl);display:flex;flex-direction:column;justify-content:space-between;z-index:2;background:linear-gradient(to bottom,rgba(0,0,0,.5),transparent 20%,transparent 75%,rgba(0,0,0,.6))}
-.lb-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
-.lb-title{margin:6px 0 0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(20px,3vw,44px);line-height:1.1}
-#lbVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
-.lb-ctrl .mute{width:auto;border-radius:100px;padding:0 16px;font-size:14px}
-.lb-hud .label{color:rgba(246,246,244,.7)}
-.lb-ctrl{display:flex;align-items:center;gap:18px}
-.lb-ctrl button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(246,246,244,.45);display:grid;place-items:center}
-.lb-ctrl button svg{width:14px;height:14px}
-.scrub{position:relative;flex:1;height:1px;background:rgba(246,246,244,.25)}
-.scrub b{position:absolute;inset:0;background:var(--paper);transform-origin:left;transform:scaleX(0)}
-
-@media (prefers-reduced-motion:reduce){.grain,.blink{animation:none}.loader{display:none}}
+/* Player */
+dialog.player{width:min(92vw,520px);max-height:92vh;padding:0;border:0;border-radius:10px;background:#000;color:#fff;overflow:hidden}
+dialog.player::backdrop{background:rgba(6,6,6,.86)}
+.player video{width:100%;max-height:calc(92vh - 56px);aspect-ratio:9/16;object-fit:contain;background:#000}
+.player-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;height:56px;padding:0 16px;font-size:15px}
+.player-bar button{border-bottom:1px solid currentColor}
 </style>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <linearGradient id="bladeGrad" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#1d1c1a"/><stop offset=".55" stop-color="#0e0e0d"/><stop offset="1" stop-color="#060606"/>
-  </linearGradient></defs></svg>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="ghost" x="-25%" y="-5%" width="150%" height="110%" color-interpolation-filters="sRGB">
-  <feGaussianBlur in="SourceGraphic" stdDeviation="0 0" result="b"/>
-  <feColorMatrix in="b" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r"/>
-  <feOffset in="r" dx="0" dy="0" result="ro"/>
-  <feColorMatrix in="b" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="g"/>
-  <feColorMatrix in="b" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="bl"/>
-  <feOffset in="bl" dx="0" dy="0" result="bo"/>
-  <feBlend in="ro" in2="g" mode="screen" result="rg"/>
-  <feBlend in="rg" in2="bo" mode="screen"/>
-</filter></svg>
-<div class="grain" aria-hidden="true"></div>
-<div class="flash" aria-hidden="true"></div>
-<div class="cursor" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b><span></span></div>
-<div class="preview" aria-hidden="true"><div class="footage" data-scene="city" data-res=".45"></div></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#topo" aria-label="Jason Alves, início"><img src="media/logo-light.png" alt="" width="40" height="32"><span>Jason Alves</span></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#trabalhos">Trabalhos</a><a href="#servicos">Serviços</a><a href="#processo">Como funciona</a><a href="#contato">Contato</a>
+    </nav>
+    <a class="btn btn-red" href="#contato">Pedir orçamento</a>
+  </div>
+</header>
 
-<div class="loader" aria-hidden="true">
-  <svg viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid slice"><g class="blades"></g></svg>
-  <div class="loader-center">
-    <img class="loader-logo" src="media/logo-light.png" alt="">
-    <div class="loader-rec"><span class="dot blink"></span><span id="ltc">00:00:00:00</span></div>
-    <div class="loader-bar"><b></b></div>
+<main>
+<section class="hero dark" id="topo">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><span class="rec" aria-hidden="true"></span>Jason Alves · Filmmaker</span>
+      <h1>Vídeos que colocam a sua marca <em>em movimento.</em></h1>
+      <p class="lead">Publicidade, reels e filmes de marca com direção, câmera e montagem. Do roteiro ao arquivo final, num único profissional.</p>
+      <div class="cta">
+        <a class="btn btn-red" href="#contato">Pedir orçamento
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#trabalhos">Ver trabalhos</a>
+      </div>
+    </div>
+    <figure class="reel">
+      <div class="reel-frame">
+        <video id="heroVideo" src="media/recanto-loop.mp4" poster="media/recanto-poster.jpg" muted loop playsinline autoplay preload="auto" aria-label="Trecho do filme Forró de Respeito"></video>
+        <button class="reel-play" type="button" data-play="media/recanto.mp4" data-title="Forró de Respeito · Recanto Nordestino">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg>Assistir com som</button>
+      </div>
+      <figcaption><b>Forró de Respeito</b> · Recanto Nordestino · Reels 9:16</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="trabalhos">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Trabalhos</h2>
+      <p>Filmes feitos para marcas, artistas e eventos. Clique para assistir com som.</p>
+    </div>
+    <!-- Para trocar os exemplos: troque a imagem, o título e o cliente, e coloque
+         data-play="media/arquivo.mp4" num <button class="work-media"> (veja o primeiro card). -->
+    <ul class="works-grid">
+      <li class="work">
+        <button class="work-media" type="button" data-play="media/recanto.mp4" data-title="Forró de Respeito · Recanto Nordestino" aria-label="Assistir Forró de Respeito">
+          <img src="media/recanto-poster.jpg" alt="Apresentadora no Recanto Nordestino" loading="lazy" width="540" height="960">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg>Assistir</span>
+        </button>
+        <div><h3>Forró de Respeito</h3><p>Recanto Nordestino · Reels 9:16</p></div>
+      </li>
+      <li class="work">
+        <div class="work-media"><img src="media/work-sunset.jpg" alt="" loading="lazy" width="540" height="960"><span class="badge soon">Exemplo</span></div>
+        <div><h3>Maré Alta</h3><p>Hotelaria · Filme de marca</p></div>
+      </li>
+      <li class="work">
+        <div class="work-media"><img src="media/work-city.jpg" alt="" loading="lazy" width="540" height="960"><span class="badge soon">Exemplo</span></div>
+        <div><h3>Noite Elétrica</h3><p>Automotivo · Publicidade 30″</p></div>
+      </li>
+      <li class="work">
+        <div class="work-media"><img src="media/work-dunes.jpg" alt="" loading="lazy" width="540" height="960"><span class="badge soon">Exemplo</span></div>
+        <div><h3>Duna</h3><p>Moda · Campanha</p></div>
+      </li>
+      <li class="work">
+        <div class="work-media"><img src="media/work-rain.jpg" alt="" loading="lazy" width="540" height="960"><span class="badge soon">Exemplo</span></div>
+        <div><h3>Depois da Chuva</h3><p>Música · Videoclipe</p></div>
+      </li>
+      <li class="work">
+        <div class="work-media"><img src="media/work-concert.jpg" alt="" loading="lazy" width="540" height="960"><span class="badge soon">Exemplo</span></div>
+        <div><h3>Pela Última Vez</h3><p>Eventos · Aftermovie</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="dark" id="servicos">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Serviços</h2>
+      <p>Uma equipe enxuta, com a mesma pessoa cuidando da direção, da câmera e da montagem.</p>
+    </div>
+    <ul class="svc">
+      <li><h3>Publicidade</h3><p>Comerciais para TV, internet e redes sociais, do roteiro à finalização.</p><span>15″ · 30″ · 60″</span></li>
+      <li><h3>Reels e vertical</h3><p>Vídeos curtos pensados para prender a atenção nos primeiros segundos.</p><span>9:16 · Reels e stories</span></li>
+      <li><h3>Filme de marca</h3><p>A história da sua empresa contada com cuidado de cinema.</p><span>2 a 4 min</span></li>
+      <li><h3>Videoclipe</h3><p>Narrativo ou de performance, com direção e fotografia.</p><span>Música</span></li>
+      <li><h3>Direção de fotografia</h3><p>Diárias de câmera e luz para produtoras e agências.</p><span>Diárias</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="processo">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Como funciona</h2>
+      <p>Três etapas, com a sua aprovação antes de cada uma começar.</p>
+    </div>
+    <ol class="steps">
+      <li><span class="n">01</span><h3>Pré-produção</h3><p>Roteiro, decupagem, referências de luz e cor, locação e elenco. Você aprova cada quadro antes de a câmera ligar.</p></li>
+      <li><span class="n">02</span><h3>Filmagem</h3><p>Câmera de cinema, luz desenhada para cada cena e uma equipe pequena, para todo mundo ficar à vontade na frente da lente.</p></li>
+      <li><span class="n">03</span><h3>Pós-produção</h3><p>Montagem, cor, som e trilha. Entrega em todos os formatos da campanha, do cinema ao story.</p></li>
+    </ol>
+  </div>
+</section>
+
+<div class="band" role="region" aria-label="Segmentos">
+  <div class="wrap">
+    <span class="eyebrow">Para quem eu filmo</span>
+    <ul><li>Gastronomia</li><li>Hotelaria</li><li>Estética</li><li>Moda</li><li>Saúde</li><li>Imobiliário</li><li>Eventos</li><li>Música</li></ul>
   </div>
 </div>
 
-<header class="nav">
-  <a href="#topo" class="brand" data-link="#topo" aria-label="Jason Alves, início"><img class="logo-light" src="media/logo-light.png" alt=""><img class="logo-dark" src="media/logo-dark.png" alt=""><span>Jason Alves</span></a>
-  <nav aria-label="Principal"><ul>
-    <li><a href="#reel" data-link="#reel"><span class="roll"><span data-t="Reel">Reel</span></span></a></li>
-    <li><a href="#trabalhos" data-link="#trabalhos"><span class="roll"><span data-t="Trabalhos">Trabalhos</span></span></a></li>
-    <li><a href="#processo" data-link="#processo"><span class="roll"><span data-t="Processo">Processo</span></span></a></li>
-    <li><a href="#servicos" data-link="#servicos"><span class="roll"><span data-t="Serviços">Serviços</span></span></a></li>
-  </ul></nav>
-  <a href="#contato" data-link="#contato" class="cta"><span class="roll"><span data-t="Contato">Contato</span></span></a>
-</header>
-
-<div id="smooth-wrapper"><div id="smooth-content">
-<main>
-
-<section class="hero dark" id="topo">
-  <img class="hero-bg" src="media/hero-bg.jpg" alt="" aria-hidden="true">
-  <div class="hero-meta wrap">
-    <p class="hero-claim">Filmes que a gente sente antes de entender.</p>
-    <span class="label">Filmmaker<br>Publicidade · Reels · Filmes de marca</span>
-  </div>
-  <div class="hero-frame">
-    <div class="footage" data-video="media/recanto-loop.mp4" data-poster="media/recanto-poster.jpg"></div>
-    <div class="hud label" aria-hidden="true">
-      <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
-      <span class="rec"><span class="dot blink"></span><span id="tc">00:00:00:00</span></span>
-    </div>
-    <button class="open" data-open="recanto" data-cursor="Assistir" aria-label="Assistir Forró de Respeito"></button>
-  </div>
-  <h1 class="hero-name"><span class="hero-fit" aria-label="Jason Alves">Jason Alves<i>.</i></span></h1>
-</section>
-
-<section class="manifesto wrap" aria-labelledby="mf">
-  <h2 id="mf" class="manifesto-text">Eu não filmo coisas. Filmo o instante em que elas <em>passam a importar.</em></h2>
-  <div class="manifesto-sub">
-    <p>Direção, câmera e montagem para marcas, artistas e histórias reais. Do roteiro ao reel publicado.</p>
-    <span class="label">Agenda 2027 aberta</span>
-  </div>
-</section>
-
-<section class="reel" id="reel" aria-label="Showreel">
-  <div class="reel-head wrap"><span class="label">Showreel 2026</span><span class="label" style="text-align:right">Role para girar o rolo</span></div>
-  <h2 class="reel-title">Show<em>reel</em></h2>
-  <div class="wheel" aria-hidden="true"></div>
-  <div class="reel-frame">
-    <div class="footage" data-scene="montage" data-res=".5"></div>
-    <i class="letterbox t"></i><i class="letterbox b"></i>
-  </div>
-  <div class="reel-label" aria-hidden="true"><span class="label">Jason Alves · 2024–2026</span><span class="label"><span id="focal">135</span> mm</span></div>
-  <div class="reel-cta">
-    <button class="play-btn" data-open="reel" data-cursor="Assistir" aria-label="Assistir ao showreel">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg>
-    </button>
-  </div>
-</section>
-
-<section id="trabalhos" aria-labelledby="wk">
-  <div class="works-head wrap">
-    <h2 id="wk" class="h-xl">Trabalhos <em>selecionados</em></h2>
-    <span class="label">Feitos para a tela vertical. Passe o cursor para ver em cor e clique para assistir com som.</span>
-  </div>
-  <div class="works-pin"><div class="track"></div></div>
-</section>
-
-<section class="clients" aria-label="Clientes"><div class="marquee"></div></section>
-
-<section class="process dark wrap" id="processo" aria-labelledby="pc">
-  <h2 id="pc" class="label" style="margin:0;font-weight:400">Processo</h2>
-  <div class="stage" aria-hidden="true">
-  <svg class="slate" viewBox="0 0 400 330" aria-hidden="true">
-    <defs>
-      <pattern id="stripes" width="56" height="40" patternUnits="userSpaceOnUse" patternTransform="skewX(-35)">
-        <rect width="28" height="40" fill="#f6f6f4"/><rect x="28" width="28" height="40" fill="#0d0d0c"/>
-      </pattern>
-    </defs>
-    <rect x="4" y="66" width="392" height="34" rx="2" fill="url(#stripes)" stroke="#f6f6f4" stroke-width="1.2"/>
-    <rect x="4" y="100" width="392" height="226" rx="3" fill="#141413" stroke="#f6f6f4" stroke-width="1.2"/>
-    <g stroke="rgba(246,246,244,.3)" stroke-width="1">
-      <line x1="4" y1="160" x2="396" y2="160"/><line x1="4" y1="226" x2="396" y2="226"/><line x1="4" y1="276" x2="396" y2="276"/>
-      <line x1="134" y1="160" x2="134" y2="226"/><line x1="264" y1="160" x2="264" y2="226"/><line x1="200" y1="226" x2="200" y2="326"/>
-    </g>
-    <text class="lbl" x="16" y="118">PROD.</text><text class="chalk" x="16" y="148">Seu próximo filme</text>
-    <text class="lbl" x="16" y="176">ROLL</text><text class="chalk" x="16" y="212" >A001</text>
-    <text class="lbl" x="146" y="176">SCENE</text><text class="chalk" x="146" y="212" >01</text>
-    <text class="lbl" x="276" y="176">TAKE</text><text class="chalk" x="276" y="212" >1</text>
-    <text class="lbl" x="16" y="244">DIRECTOR</text><text class="chalk sm" x="16" y="266">Jason Alves</text>
-    <text class="lbl" x="212" y="244">CAMERA</text><text class="chalk sm" x="212" y="266">A-cam</text>
-    <text class="lbl" x="16" y="294">DATE</text><text class="chalk sm" x="16" y="316" id="s-date">--.--.--</text>
-    <text class="lbl" x="212" y="294">FPS</text><text class="chalk sm" x="212" y="316">24</text>
-    <g class="stick">
-      <rect x="4" y="32" width="392" height="34" rx="2" fill="url(#stripes)" stroke="#f6f6f4" stroke-width="1.2"/>
-      <circle cx="16" cy="58" r="4.5" fill="#0d0d0c" stroke="#f6f6f4" stroke-width="1.2"/>
-    </g>
-  </svg>
-    <div class="board">
-      <figure class="panel"><svg viewBox="0 0 160 90">
-        <path class="ink soft" pathLength="1" d="M0 60 L160 60"/>
-        <path class="ink soft" pathLength="1" d="M0 60 L28 42 L50 54 L78 30 L112 58"/>
-        <path class="ink" pathLength="1" d="M128 22 a7 7 0 1 0 .01 0"/>
-        <path class="ink" pathLength="1" d="M70 56 a3 3 0 1 0 .01 0 M70 62 L70 73 L67 81 M70 73 L73 81 M66 66 L74 66"/>
-        <text x="6" y="84">01 GERAL</text></svg></figure>
-      <figure class="panel"><svg viewBox="0 0 160 90">
-        <path class="ink soft" pathLength="1" d="M150 0 L100 46 M160 14 L108 54"/>
-        <path class="ink" pathLength="1" d="M80 24 a11 11 0 1 0 .01 0"/>
-        <path class="ink" pathLength="1" d="M50 90 C54 62 106 62 110 90"/>
-        <path class="ink" pathLength="1" d="M14 22 L36 32 M36 32 L28 33 M36 32 L31 26"/>
-        <text x="6" y="84">02 MÉDIO · DOLLY IN</text></svg></figure>
-      <figure class="panel"><svg viewBox="0 0 160 90">
-        <path class="ink soft" pathLength="1" d="M160 0 L108 40 M160 22 L116 54"/>
-        <path class="ink soft" pathLength="1" d="M18 18 a5 5 0 1 0 .01 0 M140 24 a4 4 0 1 0 .01 0 M134 58 a6 6 0 1 0 .01 0 M26 54 a4 4 0 1 0 .01 0"/>
-        <path class="ink" pathLength="1" d="M80 18 C68 18 63 28 63 40 C63 53 70 61 80 61 C90 61 97 53 97 40 C97 28 92 18 80 18"/>
-        <path class="ink" pathLength="1" d="M64 34 C58 54 57 74 54 90 M96 34 C102 54 103 74 106 90"/>
-        <path class="ink" pathLength="1" d="M42 90 C48 75 64 68 80 68 C96 68 112 75 118 90"/>
-        <text x="6" y="84">03 CLOSE · BOKEH</text></svg></figure>
-    </div>
-    <div class="shot">
-      <div class="footage" data-video="media/recanto-loop.mp4"></div>
-      <div class="vf"><i></i><i></i><i></i><i></i><span class="label l"><span class="dot blink"></span>REC</span><span class="label r" id="lut">Log C</span></div>
-    </div>
-    <div class="tl">
-      <div class="ruler trk-in"><span>00:00</span><span>00:15</span><span>00:30</span><span>00:45</span><span>01:00</span></div>
-      <div class="trk trk-in"><b>V2</b><div class="lane"><i style="left:24%;width:12%;background:linear-gradient(90deg,#3b2a3a,#b5604a)"></i><i style="left:66%;width:9%;background:linear-gradient(90deg,#16243a,#5d7fa8)"></i></div></div>
-      <div class="trk trk-in"><b>V1</b><div class="lane"><i style="left:0;width:23%;background:linear-gradient(90deg,#2a1d16,#c9875a)"></i><i style="left:23.5%;width:19%;background:linear-gradient(90deg,#0d0b12,#6b5a7a)"></i><i style="left:43%;width:28%;background:linear-gradient(90deg,#1c2a22,#8fa08f)"></i><i style="left:71.5%;width:28.5%;background:linear-gradient(90deg,#2b1410,#e09a62)"></i></div></div>
-      <div class="trk a trk-in"><b>A1</b><div class="lane"><i style="left:0;width:100%"></i></div></div>
-      <div class="ph-wrap trk-in"><i class="playhead"></i></div>
-    </div>
-  </div>
-  <div class="steps">
-    <article class="step" data-scene="Pré">
-      <span class="label">Take 1 de 3</span>
-      <h3>Pré-produção</h3>
-      <p>Roteiro, decupagem, referências de luz e cor, locação e elenco. Você aprova cada quadro antes de a câmera ligar.</p>
-    </article>
-    <article class="step" data-scene="Set">
-      <span class="label">Take 2 de 3</span>
-      <h3>Filmagem</h3>
-      <p>Câmera de cinema, luz desenhada para cada cena e uma equipe pequena, para todo mundo ficar à vontade na frente da lente.</p>
-    </article>
-    <article class="step" data-scene="Pós">
-      <span class="label">Take 3 de 3</span>
-      <h3>Pós-produção</h3>
-      <p>Montagem, cor, som e trilha. Entrega em todos os formatos da campanha, do cinema ao story.</p>
-    </article>
-    <div class="step-bar" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i></div>
-  </div>
-</section>
-
-<section class="services wrap" id="servicos" aria-labelledby="sv">
-  <h2 id="sv" class="h-xl">O que eu <em>faço</em></h2>
-  <ul class="svc">
-    <li><a href="#contato" data-link="#contato" data-scene="city" data-cursor="Começar projeto"><span class="svc-t">Publicidade</span><span class="label">15″ · 30″ · 60″</span></a></li>
-    <li><a href="#contato" data-link="#contato" data-scene="concert" data-cursor="Começar projeto"><span class="svc-t">Reels e vertical</span><span class="label">9:16 · Chamadas · Séries</span></a></li>
-    <li><a href="#contato" data-link="#contato" data-scene="sunset" data-cursor="Começar projeto"><span class="svc-t">Filme de marca</span><span class="label">Manifesto</span></a></li>
-    <li><a href="#contato" data-link="#contato" data-scene="rain" data-cursor="Começar projeto"><span class="svc-t">Videoclipe</span><span class="label">Música</span></a></li>
-    <li><a href="#contato" data-link="#contato" data-scene="haze" data-cursor="Começar projeto"><span class="svc-t">Direção de fotografia</span><span class="label">Diárias</span></a></li>
-  </ul>
-</section>
-
-<section class="contact wrap" id="contato" aria-labelledby="ct">
-  <h2 id="ct" class="h-xl">Vamos <em>criar?</em></h2>
-  <div class="contact-grid">
-    <div class="contact-info">
-      <span class="label">E-mail</span>
-      <div class="mail" id="mail">contato@jasonalves.com.br</div>
-      <button class="copy" id="copyMail" type="button">Copiar e-mail</button>
-      <div class="socials">
-        <a class="soc" href="https://instagram.com/" target="_blank" rel="noopener">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".9" fill="currentColor" stroke="none"/></svg></span>
-          <span><b>Instagram</b><small>Bastidores e reels novos toda semana</small></span><svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-        <a class="soc" href="https://vimeo.com/" target="_blank" rel="noopener">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 4.4 10c1-.8 1.8-1.2 2.3-.6.8 1 1.7 6.9 3.2 8.7 1.4 1.6 3.4.6 5.6-2.3 2.7-3.5 4.3-6.6 4.5-8.7.3-3.2-2.4-3.6-5.4-1.4 1.6-.9 3.2-.7 2.7 1.5-.5 2.1-2.6 5.6-3.5 5.6-.8 0-1.6-6.2-2.6-8.3C10 2.8 6.3 6 3 8.5Z"/></svg></span>
-          <span><b>Vimeo</b><small>Filmes completos em alta qualidade</small></span><svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-        <a class="soc" href="https://wa.me/5511999999999" target="_blank" rel="noopener">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19.2L4 20Z"/><path d="M9 8.6c0 3.3 3 6.4 6.4 6.4l1-1.6-2-1-.9.9c-1-.4-2.4-1.8-2.8-2.8l.9-.9-1-2-1.6 1Z" fill="currentColor" stroke="none"/></svg></span>
-          <span><b>WhatsApp</b><small>Resposta rápida para orçamentos</small></span><svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+<section class="contact" id="contato">
+  <div class="wrap">
+    <div>
+      <h2>Vamos <em>criar?</em></h2>
+      <p class="lead">Conte a ideia, o prazo e onde o vídeo vai passar. Eu respondo com um caminho e um orçamento.</p>
+      <div class="mail-row">
+        <span class="mail" id="mail">contato@jasonalves.com.br</span>
+        <button class="copy" id="copyMail" type="button">Copiar e-mail</button>
       </div>
+      <ul class="socials">
+        <li><a href="https://wa.me/5511999999999" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19.2L4 20Z"/><path d="M9 8.6c0 3.3 3 6.4 6.4 6.4l1-1.6-2-1-.9.9c-1-.4-2.4-1.8-2.8-2.8l.9-.9-1-2-1.6 1Z" fill="currentColor" stroke="none"/></svg></span>
+          <span><b>WhatsApp</b><small>O caminho mais rápido para um orçamento</small></span>
+          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
+        <li><a href="https://instagram.com/" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".9" fill="currentColor" stroke="none"/></svg></span>
+          <span><b>Instagram</b><small>Bastidores e trabalhos novos</small></span>
+          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
+        <li><a href="https://vimeo.com/" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 4.4 10c1-.8 1.8-1.2 2.3-.6.8 1 1.7 6.9 3.2 8.7 1.4 1.6 3.4.6 5.6-2.3 2.7-3.5 4.3-6.6 4.5-8.7.3-3.2-2.4-3.6-5.4-1.4 1.6-.9 3.2-.7 2.7 1.5-.5 2.1-2.6 5.6-3.5 5.6-.8 0-1.6-6.2-2.6-8.3C10 2.8 6.3 6 3 8.5Z"/></svg></span>
+          <span><b>Vimeo</b><small>Filmes completos em alta qualidade</small></span>
+          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
+      </ul>
     </div>
     <form class="brief" id="brief" novalidate>
-      <div class="field"><label class="label" for="f-name">Nome e marca</label><input id="f-name" name="nome" autocomplete="name" placeholder="Ana, da Maré Hotéis"></div>
-      <fieldset class="field"><legend class="label">Tipo de projeto</legend>
+      <div class="field"><label for="f-name">Nome e marca</label><input id="f-name" name="nome" autocomplete="name" placeholder="Ana, da Maré Hotéis"></div>
+      <fieldset class="field"><legend>Tipo de projeto</legend>
         <div class="chips">
           <input type="radio" name="tipo" id="t1" value="Publicidade" checked><label for="t1">Publicidade</label>
-          <input type="radio" name="tipo" id="t2" value="Filme de marca"><label for="t2">Filme de marca</label>
-          <input type="radio" name="tipo" id="t3" value="Videoclipe"><label for="t3">Videoclipe</label>
-          <input type="radio" name="tipo" id="t4" value="Reels"><label for="t4">Reels</label>
+          <input type="radio" name="tipo" id="t2" value="Reels"><label for="t2">Reels</label>
+          <input type="radio" name="tipo" id="t3" value="Filme de marca"><label for="t3">Filme de marca</label>
+          <input type="radio" name="tipo" id="t4" value="Videoclipe"><label for="t4">Videoclipe</label>
+          <input type="radio" name="tipo" id="t5" value="Direção de fotografia"><label for="t5">Direção de fotografia</label>
         </div>
       </fieldset>
-      <fieldset class="field"><legend class="label">Segmento</legend>
+      <fieldset class="field"><legend>Segmento</legend>
         <div class="chips">
           <input type="radio" name="segmento" id="s1" value="Gastronomia" checked><label for="s1">Gastronomia</label>
           <input type="radio" name="segmento" id="s2" value="Hotelaria e turismo"><label for="s2">Hotelaria e turismo</label>
@@ -570,916 +335,83 @@ form.brief{display:flex;flex-direction:column;gap:32px}
           <input type="radio" name="segmento" id="s8" value="Outro"><label for="s8">Outro</label>
         </div>
       </fieldset>
-      <div class="field"><label class="label" for="f-msg">A ideia</label><textarea id="f-msg" name="msg" placeholder="Prazo, onde vai passar, referências"></textarea></div>
-      <a class="send magnetic" id="send" href="https://wa.me/5511999999999" target="_blank" rel="noopener" data-cursor="Enviar">
-        Enviar pelo WhatsApp
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      <div class="field"><label for="f-msg">A ideia</label><textarea id="f-msg" name="msg" placeholder="Prazo, onde o vídeo vai passar, referências"></textarea></div>
+      <a class="btn btn-red" id="send" href="https://wa.me/5511999999999" target="_blank" rel="noopener">Enviar pelo WhatsApp
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p class="note">Abre o WhatsApp com a mensagem já escrita.</p>
     </form>
   </div>
 </section>
+</main>
 
-<footer class="footer dark" aria-label="Rodapé">
+<footer class="foot dark">
   <div class="wrap">
-    <div class="ft-top">
-      <div class="ft-cta">
-        <span class="label">Agenda 2027 aberta</span>
-        <a class="ft-big" href="#contato" data-link="#contato" data-cursor="Começar projeto">Vamos colocar sua marca <em>em movimento?</em></a>
-      </div>
-      <nav class="ft-cols" aria-label="Rodapé">
-        <div><span class="label">Navegação</span>
-          <a href="#reel" data-link="#reel">Reel</a><a href="#trabalhos" data-link="#trabalhos">Trabalhos</a><a href="#processo" data-link="#processo">Processo</a><a href="#servicos" data-link="#servicos">Serviços</a></div>
-        <div><span class="label">Contato</span>
-          <span class="sel">contato@jasonalves.com.br</span><a href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp ↗</a></div>
-        <div><span class="label">Redes</span>
-          <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://vimeo.com/" target="_blank" rel="noopener">Vimeo ↗</a><a href="https://youtube.com/" target="_blank" rel="noopener">YouTube ↗</a></div>
-      </nav>
+    <div class="foot-top">
+      <img src="media/logo-light.png" alt="Jason Alves" width="40" height="32">
+      <nav aria-label="Rodapé"><a href="#trabalhos">Trabalhos</a><a href="#servicos">Serviços</a><a href="#processo">Como funciona</a><a href="#contato">Contato</a></nav>
+      <small>© <span id="year">2026</span> Jason Alves · Filmmaker</small>
     </div>
-    <div class="ft-mid">
-      <img src="media/logo-light.png" alt="Jason Alves">
-      <span class="label">© 2026 Jason Alves · Filmmaker</span>
-      <button class="rewind" id="rewind" type="button" data-cursor="Voltar ao topo">Voltar ao topo ↑</button>
-    </div>
+    <span class="wordmark" id="wordmark" aria-hidden="true">Jason Alves<i>.</i></span>
   </div>
-  <div class="ft-name"><span class="ft-fit" aria-label="Jason Alves">Jason Alves<i>.</i></span></div>
 </footer>
 
-</main>
-</div></div>
+<dialog class="player" id="player" aria-label="Player de vídeo">
+  <video id="playerVideo" controls playsinline preload="none"></video>
+  <div class="player-bar"><span id="playerTitle"></span><button type="button" id="playerClose">Fechar</button></div>
+</dialog>
 
-<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lbTitle">
-  <div class="footage" id="lbMedia" data-scene="city" data-res=".55"></div>
-  <video id="lbVideo" playsinline preload="none" hidden></video>
-  <div class="lb-hud">
-    <div class="lb-top">
-      <div><span class="label" id="lbMeta">Showreel 2026</span><h2 class="lb-title" id="lbTitle">Showreel</h2></div>
-      <button class="lb-close" id="lbClose" type="button" data-cursor="Fechar">Fechar</button>
-    </div>
-    <div class="lb-ctrl">
-      <button id="lbPlay" type="button" aria-label="Pausar"><svg viewBox="0 0 24 24" fill="currentColor"><path id="lbIcon" d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
-      <span class="label" id="lbTc">00:00:00:00</span>
-      <div class="scrub"><b id="lbBar"></b></div>
-      <span class="label" id="lbDur">02:14</span>
-      <button class="mute" id="lbMute" type="button" hidden>Som ligado</button>
-    </div>
-  </div>
-</div>
-
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
-<script type="module" src="scenes3d.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script>
-/* CONTENT — troque pelos projetos reais. Adicione `video: "filmes/arquivo.mp4"` para usar o filme real. */
-const PROJECTS = [
-  {id:'recanto', title:'Forró de Respeito', client:'Recanto Nordestino', tag:'Reels · 9:16', vertical:true,
-   video:'media/recanto-loop.mp4', full:'media/recanto.mp4', dur:'00:25'},
-  {id:'mare',   title:'Maré Alta',       client:'Maré Hotéis',         year:2026, scene:'sunset',  dur:'00:30', vertical:true},
-  {id:'noite',  title:'Noite Elétrica',  client:'Vértice Motors',      year:2025, scene:'city',    dur:'00:30', vertical:true},
-  {id:'duna',   title:'Duna',            client:'Casa Nômade',         year:2025, scene:'dunes',   dur:'00:45', vertical:true},
-  {id:'chuva',  title:'Depois da Chuva', client:'Selo Raiz Records',   year:2025, scene:'rain',    dur:'00:45', vertical:true},
-  {id:'raizes', title:'Raízes',          client:'Instituto Mata Viva', year:2024, scene:'forest',  dur:'01:00', vertical:true},
-  {id:'ultima', title:'Pela Última Vez', client:'Turnê Lume',          year:2024, scene:'concert', dur:'00:40', vertical:true},
-];
-const CLIENTS = ['Recanto Nordestino','Maré Hotéis','Vértice Motors','Casa Nômade','Selo Raiz','Aurora Cosméticos','Banco Ampla','Orvalho Café','Lume Arquitetura'];
-const WHATSAPP = '5511999999999';
+/* Nada aqui anima a página: só o player, o formulário, copiar o e-mail e o ajuste do nome no rodapé. */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hero = document.getElementById('heroVideo');
+  if (reduce && hero){ hero.removeAttribute('autoplay'); hero.pause(); }
 
-const rnd = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
-const TAU = Math.PI * 2;
-const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+  // Player
+  var dlg = document.getElementById('player'), pv = document.getElementById('playerVideo'), pt = document.getElementById('playerTitle');
+  function openPlayer(src, title){
+    pt.textContent = title || '';
+    pv.src = src;
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    if (hero) hero.pause();
+    var p = pv.play(); if (p && p.catch) p.catch(function(){});
+  }
+  function closePlayer(){ pv.pause(); pv.removeAttribute('src'); pv.load(); if (dlg.open) dlg.close(); if (hero && !reduce) hero.play().catch(function(){}); }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-play]'); if (b){ openPlayer(b.getAttribute('data-play'), b.getAttribute('data-title')); }
+  });
+  document.getElementById('playerClose').addEventListener('click', closePlayer);
+  dlg.addEventListener('close', function(){ if (pv.getAttribute('src')) closePlayer(); });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg) closePlayer(); });
 
-const SCENES = {
-  city: {
-    init(r, w, h){
-      const pal = [[255,170,80],[255,96,60],[90,170,255],[255,225,180],[255,140,40]];
-      return {
-        bokeh: Array.from({length:26}, () => ({x:r()*w, y:h*(.12+r()*.8), rad:h*(.03+r()*.08), c:pal[r()*pal.length|0], v:(r()-.5)*.6, ph:r()*TAU})),
-        cars: Array.from({length:14}, () => ({x:r()*w, y:h*(.74+r()*.12), v:(r()>.5?1:-1)*(w*(.05+r()*.12)), c: r()>.5?[255,60,40]:[255,235,200]})),
-        flares: Array.from({length:3}, () => ({x:r()*w, y:h*(.25+r()*.45), v:(r()-.5)*w*.01}))
-      };
-    },
-    draw(c, w, h, t, s){
-      let g = c.createLinearGradient(0,0,0,h);
-      g.addColorStop(0,'#03040a'); g.addColorStop(.6,'#0b0a16'); g.addColorStop(1,'#1a0c08');
-      c.fillStyle = g; c.fillRect(0,0,w,h);
-      c.globalCompositeOperation = 'lighter';
-      for (const p of s.bokeh){
-        const span = w + p.rad*2;
-        const x = (((p.x + p.v*t*h*.05) % span) + span) % span - p.rad;
-        const a = .18 + .14*Math.sin(t*1.1 + p.ph);
-        const rg = c.createRadialGradient(x,p.y,0,x,p.y,p.rad);
-        rg.addColorStop(0, rgba(p.c,a*.55)); rg.addColorStop(.82, rgba(p.c,a)); rg.addColorStop(1, rgba(p.c,0));
-        c.fillStyle = rg; c.beginPath(); c.arc(x,p.y,p.rad,0,TAU); c.fill();
-      }
-      for (const k of s.cars){
-        const x = (((k.x + k.v*t) % (w*1.4)) + w*1.4) % (w*1.4) - w*.2;
-        const lg = c.createLinearGradient(x - w*.12, 0, x, 0);
-        lg.addColorStop(0, rgba(k.c,0)); lg.addColorStop(1, rgba(k.c,.55));
-        c.fillStyle = lg; c.fillRect(x - w*.12, k.y, w*.12, Math.max(1,h*.006));
-      }
-      for (const f of s.flares){
-        const x = f.x + Math.sin(t*.3 + f.y)*w*.04;
-        const lg = c.createLinearGradient(0,0,w,0);
-        lg.addColorStop(0,'rgba(60,130,255,0)'); lg.addColorStop(Math.min(.99,Math.max(.01,x/w)),'rgba(120,180,255,.55)'); lg.addColorStop(1,'rgba(60,130,255,0)');
-        c.fillStyle = lg; c.fillRect(0, f.y - 1, w, Math.max(2,h*.008));
-        const rg = c.createRadialGradient(x,f.y,0,x,f.y,h*.12);
-        rg.addColorStop(0,'rgba(220,235,255,.8)'); rg.addColorStop(1,'rgba(80,140,255,0)');
-        c.fillStyle = rg; c.fillRect(x-h*.12, f.y-h*.12, h*.24, h*.24);
-      }
-      c.globalCompositeOperation = 'source-over';
-    }
-  },
-  sunset: {
-    init(r){ return {ph:r()*10}; },
-    draw(c, w, h, t, s){
-      const hor = h*.6;
-      let g = c.createLinearGradient(0,0,0,hor);
-      g.addColorStop(0,'#1c1430'); g.addColorStop(.5,'#8e3a3f'); g.addColorStop(.85,'#f08a4b'); g.addColorStop(1,'#ffc77a');
-      c.fillStyle = g; c.fillRect(0,0,w,hor);
-      const sx = w*.5 + Math.sin(t*.05 + s.ph)*w*.06, sy = hor - h*.06 + Math.sin(t*.04)*h*.01;
-      let rg = c.createRadialGradient(sx,sy,0,sx,sy,h*.6);
-      rg.addColorStop(0,'rgba(255,220,160,.9)'); rg.addColorStop(.12,'rgba(255,180,100,.5)'); rg.addColorStop(1,'rgba(255,120,60,0)');
-      c.fillStyle = rg; c.fillRect(0,0,w,hor);
-      c.fillStyle = '#fff1d6'; c.beginPath(); c.arc(sx,sy,h*.055,0,TAU); c.fill();
-      g = c.createLinearGradient(0,hor,0,h);
-      g.addColorStop(0,'#5a2a2e'); g.addColorStop(.3,'#24141e'); g.addColorStop(1,'#07060a');
-      c.fillStyle = g; c.fillRect(0,hor,w,h-hor);
-      c.globalCompositeOperation = 'lighter';
-      const rows = 46;
-      for (let i=0;i<rows;i++){
-        const k = i/rows, y = hor + Math.pow(k,1.5)*(h-hor);
-        const ww = (w*.03 + k*w*.22) * (.5 + .5*Math.sin(t*1.6 + i*1.9));
-        const x = sx - ww/2 + Math.sin(t*.9 + i)*w*.01;
-        c.fillStyle = `rgba(255,190,120,${.55*(1-k)})`;
-        c.fillRect(x, y, ww, 1 + k*h*.006);
-      }
-      c.globalCompositeOperation = 'source-over';
-      c.fillStyle = 'rgba(255,200,140,.35)'; c.fillRect(0,hor-.5,w,1);
-    }
-  },
-  dunes: {
-    init(r){ return {ph:Array.from({length:5},()=>r()*TAU)}; },
-    draw(c, w, h, t, s){
-      let g = c.createLinearGradient(0,0,0,h*.6);
-      g.addColorStop(0,'#c98c63'); g.addColorStop(.6,'#efc59a'); g.addColorStop(1,'#f8e2c3');
-      c.fillStyle = g; c.fillRect(0,0,w,h);
-      const rg = c.createRadialGradient(w*.72,h*.3,0,w*.72,h*.3,h*.5);
-      rg.addColorStop(0,'rgba(255,250,235,.95)'); rg.addColorStop(.1,'rgba(255,240,210,.6)'); rg.addColorStop(1,'rgba(255,230,200,0)');
-      c.fillStyle = rg; c.fillRect(0,0,w,h);
-      const cols = ['#e6b78c','#d39a6c','#b8774d','#8e5235','#5c2f1f'];
-      for (let i=0;i<5;i++){
-        const base = h*(.48 + i*.11), sp = (i+1)*(i+1)*.006*w, amp = h*(.04 + i*.018);
-        c.beginPath(); c.moveTo(0,h);
-        for (let x=0;x<=w;x+=4){
-          const X = x + t*sp;
-          const y = base - amp*Math.sin(X*.006/(1+i*.2) + s.ph[i]) - amp*.5*Math.sin(X*.017 + s.ph[i]*2);
-          c.lineTo(x,y);
-        }
-        c.lineTo(w,h); c.closePath(); c.fillStyle = cols[i]; c.fill();
-      }
-    }
-  },
-  rain: {
-    init(r, w, h){
-      const pal = [[255,70,60],[255,170,70],[60,220,200],[255,240,210]];
-      return {
-        lights: Array.from({length:26},()=>({x:r()*w, y:h*(.3+r()*.5), rad:h*(.05+r()*.1), c:pal[r()*4|0], ph:r()*TAU})),
-        drops: Array.from({length:150},()=>({x:r()*w*1.2, y:r()*h, l:h*(.03+r()*.06), v:h*(.9+r()*.8)})),
-        glass: Array.from({length:34},()=>({x:r()*w, y:r()*h, rad:1+r()*h*.012, v:r()<.3? h*(.02+r()*.05):0}))
-      };
-    },
-    draw(c, w, h, t, s){
-      let g = c.createLinearGradient(0,0,0,h);
-      g.addColorStop(0,'#04070e'); g.addColorStop(1,'#0e1828');
-      c.fillStyle = g; c.fillRect(0,0,w,h);
-      c.globalCompositeOperation = 'lighter';
-      for (const p of s.lights){
-        const a = .16 + .08*Math.sin(t*.7 + p.ph);
-        const rg = c.createRadialGradient(p.x,p.y,0,p.x,p.y,p.rad);
-        rg.addColorStop(0, rgba(p.c,a)); rg.addColorStop(.8, rgba(p.c,a*.8)); rg.addColorStop(1, rgba(p.c,0));
-        c.fillStyle = rg; c.beginPath(); c.arc(p.x,p.y,p.rad,0,TAU); c.fill();
-      }
-      c.strokeStyle = 'rgba(180,205,255,.22)'; c.lineWidth = 1; c.beginPath();
-      for (const d of s.drops){
-        const y = ((d.y + t*d.v) % (h + d.l)) - d.l, x = d.x - (y/h)*w*.08;
-        c.moveTo(x,y); c.lineTo(x - d.l*.12, y + d.l);
-      }
-      c.stroke();
-      for (const d of s.glass){
-        const y = (d.y + t*d.v) % (h + 10);
-        const rg = c.createRadialGradient(d.x - d.rad*.3, y - d.rad*.3, 0, d.x, y, d.rad);
-        rg.addColorStop(0,'rgba(255,255,255,.45)'); rg.addColorStop(1,'rgba(160,190,255,.05)');
-        c.fillStyle = rg; c.beginPath(); c.arc(d.x,y,d.rad,0,TAU); c.fill();
-      }
-      c.globalCompositeOperation = 'source-over';
-    }
-  },
-  forest: {
-    init(r, w){
-      return {layers:[0,1,2,3].map(i=>Array.from({length:7+i*2},()=>({x:r()*w*1.5, wd:(.012+r()*.02)*(1+i*1.2)})))};
-    },
-    draw(c, w, h, t, s){
-      let g = c.createLinearGradient(0,0,0,h);
-      g.addColorStop(0,'#a9b3a6'); g.addColorStop(.55,'#66756a'); g.addColorStop(1,'#1d251f');
-      c.fillStyle = g; c.fillRect(0,0,w,h);
-      c.globalCompositeOperation = 'lighter';
-      for (let i=0;i<5;i++){
-        const x0 = w*(.05 + i*.14) + Math.sin(t*.2 + i)*w*.02;
-        const lg = c.createLinearGradient(x0,0,x0 + w*.5,h);
-        lg.addColorStop(0,'rgba(255,245,210,.16)'); lg.addColorStop(1,'rgba(255,245,210,0)');
-        c.fillStyle = lg; c.beginPath();
-        c.moveTo(x0,0); c.lineTo(x0 + w*.05,0); c.lineTo(x0 + w*.55,h); c.lineTo(x0 + w*.42,h); c.closePath(); c.fill();
-      }
-      c.globalCompositeOperation = 'source-over';
-      const cols = ['#8b968b','#5d6a60','#353f38','#121713'];
-      s.layers.forEach((L,i)=>{
-        const sp = w*.004*(i+1)*(i+1);
-        c.fillStyle = cols[i];
-        for (const tr of L){
-          const span = w*1.5;
-          const x = (((tr.x - t*sp) % span) + span) % span - w*.25;
-          const ww = tr.wd*w;
-          c.fillRect(x, 0, ww, h);
-        }
-        c.fillStyle = `rgba(169,179,166,${.18 - i*.03})`; c.fillRect(0,h*.6,w,h*.4);
-      });
-    }
-  },
-  concert: {
-    init(r, w){
-      return {
-        beams: Array.from({length:7},(_,i)=>({x:w*(.08 + i*.14), ph:r()*TAU, c:[[255,61,139],[255,179,71],[80,200,255]][i%3]})),
-        ph: r()*100
-      };
-    },
-    draw(c, w, h, t, s){
-      c.fillStyle = '#050306'; c.fillRect(0,0,w,h);
-      c.globalCompositeOperation = 'lighter';
-      for (const b of s.beams){
-        const ang = Math.sin(t*.6 + b.ph)*.55;
-        const len = h*1.3, spread = .09;
-        const x1 = b.x + Math.sin(ang - spread)*len, y1 = Math.cos(ang - spread)*len;
-        const x2 = b.x + Math.sin(ang + spread)*len, y2 = Math.cos(ang + spread)*len;
-        const lg = c.createLinearGradient(b.x,0,b.x + Math.sin(ang)*len, Math.cos(ang)*len);
-        lg.addColorStop(0, rgba(b.c,.55)); lg.addColorStop(1, rgba(b.c,0));
-        c.fillStyle = lg; c.beginPath(); c.moveTo(b.x,0); c.lineTo(x1,y1); c.lineTo(x2,y2); c.closePath(); c.fill();
-        const rg = c.createRadialGradient(b.x,0,0,b.x,0,h*.08);
-        rg.addColorStop(0,'rgba(255,255,255,.9)'); rg.addColorStop(1, rgba(b.c,0));
-        c.fillStyle = rg; c.fillRect(b.x - h*.08, 0, h*.16, h*.08);
-      }
-      const fog = c.createLinearGradient(0,h*.5,0,h);
-      fog.addColorStop(0,'rgba(255,120,170,0)'); fog.addColorStop(1,'rgba(255,140,120,.25)');
-      c.fillStyle = fog; c.fillRect(0,h*.5,w,h*.5);
-      c.globalCompositeOperation = 'source-over';
-      c.fillStyle = '#020102'; c.beginPath(); c.moveTo(0,h);
-      for (let x=0;x<=w;x+=3){
-        const head = Math.abs(Math.sin(x*.11 + s.ph)) * h*.05;
-        const bob = Math.sin(t*5 + x*.07)*h*.008;
-        c.lineTo(x, h*.86 - head + bob);
-      }
-      c.lineTo(w,h); c.closePath(); c.fill();
-      for (let i=0;i<6;i++){
-        const x = w*(.1 + i*.16) + Math.sin(i*7)*w*.03;
-        const up = Math.max(0, Math.sin(t*2 + i*1.3));
-        c.fillRect(x, h*.86 - h*.18*up, Math.max(2,w*.006), h*.18*up);
-      }
-      if (Math.sin(t*1.7 + s.ph) > .985){ c.fillStyle = 'rgba(255,255,255,.18)'; c.fillRect(0,0,w,h); }
-    }
-  },
-  haze: {
-    init(r, w, h){ return {dust:Array.from({length:90},()=>({x:r()*w, y:r()*h, s:.5 + r()*1.4, v:r()*h*.02, ph:r()*TAU}))}; },
-    draw(c, w, h, t, s){
-      c.fillStyle = '#070608'; c.fillRect(0,0,w,h);
-      const ox = w*.92, oy = -h*.1, ang = 2.3 + Math.sin(t*.25)*.06;
-      c.globalCompositeOperation = 'lighter';
-      for (let k=0;k<2;k++){
-        const sp = k ? .08 : .16, len = w*1.4;
-        const lg = c.createLinearGradient(ox,oy, ox + Math.cos(ang)*len, oy + Math.sin(ang)*len);
-        lg.addColorStop(0,'rgba(255,215,170,.42)'); lg.addColorStop(1,'rgba(255,200,150,0)');
-        c.fillStyle = lg; c.beginPath(); c.moveTo(ox,oy);
-        c.lineTo(ox + Math.cos(ang - sp)*len, oy + Math.sin(ang - sp)*len);
-        c.lineTo(ox + Math.cos(ang + sp)*len, oy + Math.sin(ang + sp)*len);
-        c.closePath(); c.fill();
-      }
-      for (const d of s.dust){
-        const y = ((d.y - t*d.v) % h + h) % h, x = d.x + Math.sin(t*.5 + d.ph)*w*.01;
-        c.fillStyle = `rgba(255,230,200,${.25 + .25*Math.sin(t + d.ph)})`;
-        c.fillRect(x, y, d.s, d.s);
-      }
-      c.globalCompositeOperation = 'source-over';
-      const cx = w*.4, by = Math.sin(t*.8)*h*.004, hr = h*.12;
-      c.fillStyle = '#020203'; c.beginPath();
-      c.arc(cx, h*.42 + by, hr, 0, TAU); c.fill();
-      c.beginPath(); c.moveTo(cx - hr*.45, h*.5 + by);
-      c.bezierCurveTo(cx - hr*.4, h*.62, cx - hr*2.6, h*.66 + by, cx - hr*3.2, h);
-      c.lineTo(cx + hr*3.2, h); c.bezierCurveTo(cx + hr*2.6, h*.66 + by, cx + hr*.4, h*.62, cx + hr*.45, h*.5 + by);
-      c.closePath(); c.fill();
-      c.globalCompositeOperation = 'lighter';
-      c.strokeStyle = 'rgba(255,190,130,.35)'; c.lineWidth = Math.max(1, h*.004);
-      c.beginPath(); c.arc(cx, h*.42 + by, hr, -1.4, .7); c.stroke();
-      c.globalCompositeOperation = 'source-over';
-    }
+  // Formulário → WhatsApp (o link fica sempre pronto)
+  var WHATSAPP = '5511999999999', brief = document.getElementById('brief'), send = document.getElementById('send');
+  function upd(){
+    var d = new FormData(brief);
+    var txt = 'Olá, Jason! Aqui é ' + (d.get('nome') || '—') + '.\nProjeto: ' + d.get('tipo') + '\nSegmento: ' + d.get('segmento') + '\n\n' + (d.get('msg') || '');
+    send.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(txt);
   }
-};
-const MONTAGE = ['concert','sunset','city','dunes','rain','forest','haze'];
+  brief.addEventListener('input', upd); brief.addEventListener('change', upd); brief.addEventListener('submit', function(e){ e.preventDefault(); }); upd();
 
-class Footage {
-  constructor(host){
-    this.host = host; this.t = Math.random()*40; this.speed = +(host.dataset.rate || 1);
-    this.res = +(host.dataset.res || .5); this.seed = 1 + (Math.random()*1e6|0);
-    this.visible = false; this.playing = true;
-    if (host.dataset.video){
-      const v = document.createElement('video');
-      Object.assign(v,{src:host.dataset.video, muted:true, loop:true, playsInline:true, autoplay:true, preload: host.closest('.hero') ? 'auto' : 'metadata'});
-      if (host.dataset.poster) v.poster = host.dataset.poster;
-      host.appendChild(v); this.video = v; return;
-    }
-    this.canvas = document.createElement('canvas'); this.ctx = this.canvas.getContext('2d');
-    host.prepend(this.canvas);
-    this.setScene(host.dataset.scene || 'city');
-  }
-  setScene(name){ this.name = name; this.list = name === 'montage' ? MONTAGE : [name]; this.resize(true); }
-  resize(force){
-    if (!this.canvas) return;
-    const W = this.host.offsetWidth || 640, H = this.host.offsetHeight || 360;
-    const w = Math.max(160, Math.min(900, Math.round(W*this.res))), h = Math.max(90, Math.round(w*H/W));
-    if (!force && w === this.canvas.width && h === this.canvas.height) return;
-    this.canvas.width = w; this.canvas.height = h; this.w = w; this.h = h;
-    this.states = this.list.map((n,i) => SCENES[n].init(rnd(this.seed + i*97), w, h));
-    this.draw();
-  }
-  draw(){
-    if (!this.canvas) return;
-    const i = this.list.length > 1 ? Math.floor(this.t / 2.4) % this.list.length : 0;
-    if (i !== this.idx){ if (this.idx !== undefined && this.onCut) this.onCut(); this.idx = i; }
-    SCENES[this.list[i]].draw(this.ctx, this.w, this.h, this.t, this.states[i]);
-  }
-}
-/* LENS — WebGL post-process on top of any footage (canvas or real <video>):
-   shallow depth of field around a focus point, barrel distortion, chromatic aberration, light leak, grain. */
-const VS = 'attribute vec2 p;varying vec2 vUv;void main(){vUv=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
-const FS = `precision highp float;
-varying vec2 vUv;
-uniform sampler2D uTex; uniform vec2 uRes, uMouse, uScale;
-uniform float uBlur, uDof, uFocusR, uAberr, uDistort, uLeak, uTime, uVig, uAspect;
-float hash(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
-void main(){
-  vec2 c = vUv - .5;
-  vec2 ca2 = c * vec2(uAspect, 1.);
-  float r2 = dot(ca2, ca2);
-  vec2 uv = .5 + c * (1. - uDistort * r2) / (1. - uDistort * .3);
-  uv = .5 + (uv - .5) * uScale;
-  float d = length((vUv - uMouse) * vec2(uAspect, 1.));
-  float b = (uBlur + smoothstep(uFocusR, uFocusR + .45, d) * uDof) / 900.;
-  vec2 ab = c * uAberr * (1. + r2 * 5.);
-  vec3 col = vec3(0.);
-  if (b < .0004){
-    col = vec3(texture2D(uTex, uv + ab).r, texture2D(uTex, uv).g, texture2D(uTex, uv - ab).b);
-  } else {
-  for (int i = 0; i < 20; i++){
-    float fi = float(i);
-    float a = fi * 2.39996;
-    vec2 o = vec2(cos(a), sin(a)) * sqrt((fi + .5) / 20.) * b * vec2(1. / uAspect, 1.);
-    col.r += texture2D(uTex, uv + o + ab).r;
-    col.g += texture2D(uTex, uv + o).g;
-    col.b += texture2D(uTex, uv + o - ab).b;
-  }
-  col /= 20.;
-  }
-  vec2 lp = vec2(.82 + .12 * sin(uTime * .6), .25 + .1 * cos(uTime * .4));
-  col += vec3(1., .5, .2) * smoothstep(.95, 0., length((vUv - lp) * vec2(uAspect, 1.))) * uLeak;
-  col += vec3(1., .82, .62) * uLeak * .22;
-  col *= 1. - uVig * smoothstep(.3, .95, length(c * vec2(1., .85)) * 1.3);
-  col += (hash(vUv * uRes + fract(uTime * 7.)) - .5) * .045;
-  gl_FragColor = vec4(col, 1.);
-}`;
-let velAb = 0;
-class Lens {
-  constructor(f, o = {}){
-    this.f = f; this.u = Object.assign({blur:0, dof:0, focusR:.16, aberr:.0012, distort:0, leak:0, vig:.35}, o);
-    this.mouse = [.5,.5]; this.target = [.5,.5];
-    const cv = this.cv = document.createElement('canvas');
-    const gl = this.gl = cv.getContext('webgl', {antialias:false, alpha:false});
-    if (!gl) return;
-    const sh = (t, src) => { const x = gl.createShader(t); gl.shaderSource(x, src); gl.compileShader(x); if (!gl.getShaderParameter(x, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(x)); return x; };
-    const pr = gl.createProgram();
-    gl.attachShader(pr, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, FS)); gl.linkProgram(pr); gl.useProgram(pr);
-    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
-    const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-    gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
-    [[gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE],[gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE],[gl.TEXTURE_MIN_FILTER, gl.LINEAR],[gl.TEXTURE_MAG_FILTER, gl.LINEAR]].forEach(([k,v]) => gl.texParameteri(gl.TEXTURE_2D, k, v));
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    this.L = {};
-    ['uTex','uRes','uMouse','uScale','uBlur','uDof','uFocusR','uAberr','uDistort','uLeak','uTime','uVig','uAspect'].forEach(n => this.L[n] = gl.getUniformLocation(pr, n));
-    f.host.appendChild(cv); (f.canvas || f.video).style.visibility = 'hidden';
-    f.lens = this; this.ok = true; this.fresh = true; this.resize();
-  }
-  resize(){
-    const W = this.f.host.offsetWidth || 640, H = this.f.host.offsetHeight || 360, d = Math.min(1.25, devicePixelRatio || 1) * .6;
-    this.cv.width = Math.min(1800, Math.round(W*d)); this.cv.height = Math.round(this.cv.width * H / W);
-    this.gl.viewport(0, 0, this.cv.width, this.cv.height); this.fresh = true;
-  }
-  disable(){ this.ok = false; this.cv.remove(); (this.f.canvas || this.f.video).style.visibility = ''; this.f.lens = null; }
-  render(time, upload){
-    const gl = this.gl, u = this.u, L = this.L, v = this.f.video, src = this.f.canvas || v;
-    if (v && v.readyState < 2) return;
-    if (upload || this.fresh || v){ try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, src); } catch(e){ this.disable(); return; } this.fresh = false; }
-    this.mouse[0] += (this.target[0] - this.mouse[0]) * .08; this.mouse[1] += (this.target[1] - this.mouse[1]) * .08;
-    const W = this.cv.width, H = this.cv.height, oa = W / H;
-    let sx = 1, sy = 1;
-    if (v && v.videoWidth){ const sa = v.videoWidth / v.videoHeight; if (sa > oa) sx = oa / sa; else sy = sa / oa; }
-    gl.uniform2f(L.uRes, W, H); gl.uniform2f(L.uMouse, this.mouse[0], this.mouse[1]); gl.uniform2f(L.uScale, sx, sy);
-    gl.uniform1f(L.uAspect, oa); gl.uniform1f(L.uTime, time);
-    gl.uniform1f(L.uBlur, u.blur); gl.uniform1f(L.uDof, u.dof); gl.uniform1f(L.uFocusR, u.focusR);
-    gl.uniform1f(L.uAberr, u.aberr + velAb * .016); gl.uniform1f(L.uDistort, u.distort);
-    gl.uniform1f(L.uLeak, u.leak); gl.uniform1f(L.uVig, u.vig);
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
-  }
-}
-function mkLens(f, o){ try { const l = new Lens(f, o); return l.ok ? l : null; } catch(e){ console.warn('WebGL off:', e.message); return null; } }
+  // Copiar e-mail
+  document.getElementById('copyMail').addEventListener('click', function(e){
+    var btn = e.currentTarget, el = document.getElementById('mail');
+    function sel(){ var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selecionado, use Ctrl+C'; }
+    try { navigator.clipboard.writeText(el.textContent).then(function(){ btn.textContent = 'Copiado'; setTimeout(function(){ btn.textContent = 'Copiar e-mail'; }, 2000); }, sel); } catch(_){ sel(); }
+  });
 
-const footages = [];
-function mountFootage(host){ const f = new Footage(host); host._footage = f; footages.push(f); return f; }
-
-const track = document.querySelector('.track');
-track.innerHTML = PROJECTS.map(p => `
-  <article class="frame${p.vertical ? ' v' : ''}">
-    <div class="frame-media">
-      <div class="footage" data-scene="${p.scene}" data-res=".3" data-rate=".35" ${p.video ? `data-video="${p.video}"` : ''}></div>
-      ${p.tag ? `<span class="tag label"><span class="dot"></span>${p.tag}</span>` : ''}
-      <button class="open" data-open="${p.id}" data-cursor="Assistir" aria-label="Assistir ${p.title}"></button>
-    </div>
-    <div class="frame-info"><h3>${p.title}</h3><span class="label">${p.client} · ${p.year || p.tag}</span></div>
-  </article>`).join('') + `
-  <div class="frame-end">
-    <p>Tem uma história que merece esse cuidado?</p>
-    <a href="#contato" data-link="#contato" class="send magnetic" data-cursor="Começar projeto">Começar um projeto
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </div>`;
-const mset = '<div class="marquee-set">' + CLIENTS.map(c => `<span>${c}</span>`).join('') + '</div>';
-document.querySelector('.marquee').innerHTML = mset + mset.replace('class="marquee-set"','class="marquee-set" aria-hidden="true"');
-const WHEEL_N = 8, wheelEl = document.querySelector('.wheel');
-wheelEl.innerHTML = '<div class="wcard feat"><canvas class="mirror"></canvas><div class="card-af"><i></i><i></i><i></i><i></i></div></div>' +
-  PROJECTS.slice(0, WHEEL_N - 1).map(p => `<div class="wcard"><div class="footage" ${p.video ? `data-video="${p.video}"` : `data-scene="${p.scene}"`} data-res=".22" data-rate=".6"></div><span class="wtag">${p.title}</span></div>`).join('');
-document.querySelectorAll('.footage').forEach(mountFootage);
-const lbFoot = document.getElementById('lbMedia')._footage;
-const previewFoot = document.querySelector('.preview .footage')._footage;
-previewFoot.manual = true; lbFoot.manual = true;
-
-(() => {
-  const c = document.createElement('canvas'); c.width = c.height = 180; const x = c.getContext('2d');
-  const d = x.createImageData(180,180);
-  for (let i=0;i<d.data.length;i+=4){ const v = Math.random()*255; d.data[i]=d.data[i+1]=d.data[i+2]=v; d.data[i+3]=255; }
-  x.putImageData(d,0,0); document.querySelector('.grain').style.backgroundImage = `url(${c.toDataURL()})`;
+  // Nome do rodapé ocupa a largura exata da página
+  var wm = document.getElementById('wordmark');
+  function fit(){
+    var box = wm.parentElement, cs = getComputedStyle(box);
+    var w = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    wm.style.display = 'inline-block'; wm.style.fontSize = '100px';
+    wm.style.fontSize = (100 * w / wm.scrollWidth).toFixed(2) + 'px'; wm.style.display = 'block';
+  }
+  fit(); window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  document.getElementById('year').textContent = new Date().getFullYear();
 })();
-const today = new Date();
-document.getElementById('s-date').textContent = [today.getDate(), today.getMonth()+1, today.getFullYear()%100].map(n=>String(n).padStart(2,'0')).join('.');
-const tc = s => { const f = Math.floor(s*24); return [f/86400|0, (f/1440|0)%60, (f/24|0)%60, f%24].map(n=>String(n).padStart(2,'0')).join(':'); };
-
-/* render loop: draw only what is on screen, 30 fps */
-let acc = 0, heroTime = 0;
-const tcEl = document.getElementById('tc');
-let visN = 0;
-function tick(dt){
-  acc += dt; heroTime += dt; velAb *= .92;
-  const step = acc >= 1/30, vh = innerHeight, vw = innerWidth, measure = (++visN % 4) === 0;
-  if (document.hidden) return;
-  for (const f of footages){
-    if (measure && !f.manual){ const r = f.host.getBoundingClientRect(); f.visible = r.width > 0 && r.bottom > -60 && r.top < vh + 60 && r.right > -60 && r.left < vw + 60; }
-    if (!f.visible){ if (f.video) f.video.pause(); continue; }
-    let drew = false;
-    if (f.video){ if (f.video.paused) f.video.play().catch(()=>{}); }
-    else if (step && f.playing){ f.t += acc*f.speed; try { f.draw(); drew = true; } catch(err){ f.playing = false; } }
-    if (f.lens && step) f.lens.render(heroTime, drew);
-  }
-  if (step){ tcEl.textContent = tc(heroTime); acc = 0; }
-}
-addEventListener('resize', () => footages.forEach(f => { f.resize(); f.lens && f.lens.resize(); }));
-
-const hasGsap = typeof gsap !== 'undefined';
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-if (!hasGsap){
-  document.querySelector('.loader').remove();
-  let last = performance.now();
-  (function loop(now){ tick(Math.min(.05,(now-last)/1000)); last = now; requestAnimationFrame(loop); })(last);
-} else {
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
-gsap.ticker.add((t, dms) => tick(Math.min(.05, dms/1000)));
-
-const smoother = reduce ? null : ScrollSmoother.create({wrapper:'#smooth-wrapper', content:'#smooth-content', smooth:.9, effects:true, smoothTouch:false});
-const heroFoot = document.querySelector('.hero .footage');
-const heroLens = null;   // hero shows the footage as shot — no lens processing
-const reelLens = mkLens(document.querySelector('.reel .footage')._footage, {vig:.4});
-const lbLens = mkLens(lbFoot, {vig:.3});
-const setFocus = () => {};
-const leak = (lens, amt = .9, dur = .9) => lens && gsap.fromTo(lens.u, {leak:amt}, {leak:0, duration:dur, ease:'power2.out', overwrite:true});
-if (reelLens) document.querySelector('.reel .footage')._footage.onCut = () => leak(reelLens, .75, .7);
-if (lbLens) lbFoot.onCut = () => leak(lbLens, .6, .7);
-ScrollTrigger.create({onUpdate:s => { velAb = Math.max(velAb, Math.min(1, Math.abs(s.getVelocity())/2600)); }});
-document.addEventListener('click', e => {
-  const a = e.target.closest('[data-link]'); if (!a) return; e.preventDefault();
-  smoother ? smoother.scrollTo(a.dataset.link, true, 'top top') : document.querySelector(a.dataset.link)?.scrollIntoView();
-});
-
-function makeIris(svg, N = 9){
-  const g = svg.querySelector('.blades'), ns = 'http://www.w3.org/2000/svg', tanA = Math.tan(Math.PI/N);
-  const blades = Array.from({length:N}, () => { const p = document.createElementNS(ns,'path'); p.setAttribute('class','blade'); g.appendChild(p); return p; });
-  const st = {r:0, twist:0, svg};
-  (window.__irises = window.__irises || []).push(st);
-  st.render = () => {
-    if (st.gl){ st.gl.render(); return; }
-    const r = Math.max(0, st.r), x0 = -r*tanA - 1.5, d = `M${x0},${-r} L1000,${-r} L1000,-1000 L${x0},-1000 Z`;
-    blades.forEach((p,i) => { p.setAttribute('d', d); p.setAttribute('transform', `rotate(${i*360/N + st.twist})`); });
-  };
-  st.render(); return st;
-}
-
-/* 3D props (module loads async; SVG versions stand in until then) */
-const slateState = window.slateState = {clap:0, out:0};
-function attach3D(){
-  if (!window.JA3D) return;
-  (window.__irises || []).forEach(st => {
-    if (st.gl || !st.svg.isConnected) return;
-    try { st.gl = new JA3D.Iris3D(st.svg.parentElement, st); st.svg.style.visibility = 'hidden'; st.gl.render(); } catch(e){ console.warn('iris 3D off', e); }
-  });
-  const stg = document.querySelector('.stage');
-  if (stg && !window.__slate){
-    try { window.__slate = new JA3D.Slate3D(stg, slateState); stg.querySelector('.slate').style.visibility = 'hidden'; } catch(e){ console.warn('slate 3D off', e); }
-  }
-}
-addEventListener('ja3d-ready', attach3D);
-const ready3d = new Promise(res => { if (window.JA3D) return res(); addEventListener('ja3d-ready', res, {once:true}); setTimeout(res, 2600); });
-
-/* cursor: AF box that hunts while moving */
-const cur = document.querySelector('.cursor'), curLbl = cur.querySelector('span');
-if (fine){
-  const qx = gsap.quickTo(cur,'x',{duration:.35,ease:'power3'}), qy = gsap.quickTo(cur,'y',{duration:.35,ease:'power3'});
-  let lockT;
-  addEventListener('pointermove', e => {
-    qx(e.clientX); qy(e.clientY);
-    const t = e.target.closest?.('[data-cursor]');
-    if (t){
-      if (curLbl.textContent !== t.dataset.cursor) curLbl.textContent = t.dataset.cursor;
-      cur.classList.add('af', 'hunt'); cur.classList.remove('lock');
-      clearTimeout(lockT); lockT = setTimeout(() => { cur.classList.remove('hunt'); cur.classList.add('lock'); }, 220);
-    } else { clearTimeout(lockT); cur.classList.remove('af', 'hunt', 'lock'); }
-  });
-  document.querySelectorAll('.magnetic').forEach(el => {
-    const mx = gsap.quickTo(el,'x',{duration:.6,ease:'elastic.out(1,.4)'}), my = gsap.quickTo(el,'y',{duration:.6,ease:'elastic.out(1,.4)'});
-    el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); mx((e.clientX - r.left - r.width/2)*.25); my((e.clientY - r.top - r.height/2)*.3); });
-    el.addEventListener('pointerleave', () => { mx(0); my(0); });
-  });
-
-  const pv = document.querySelector('.preview');
-  const px = gsap.quickTo(pv,'x',{duration:.55,ease:'power3'}), py = gsap.quickTo(pv,'y',{duration:.55,ease:'power3'}), pr = gsap.quickTo(pv,'rotation',{duration:.8,ease:'power3'});
-  let lastX = 0;
-  document.querySelectorAll('.svc a').forEach(a => {
-    a.addEventListener('pointerenter', () => { if (previewFoot.name !== a.dataset.scene) previewFoot.setScene(a.dataset.scene); previewFoot.visible = true; gsap.to(pv,{opacity:1,scale:1,duration:.5,ease:'power3.out'}); });
-    a.addEventListener('pointerleave', () => gsap.to(pv,{opacity:0,scale:.6,duration:.4,ease:'power3.in',onComplete:() => previewFoot.visible = false}));
-    a.addEventListener('pointermove', e => { px(e.clientX - pv.offsetWidth*.5); py(e.clientY - pv.offsetHeight*.55); pr(gsap.utils.clamp(-10,10,(e.clientX - lastX)*.5)); lastX = e.clientX; });
-  });
-}
-
-/* hero: name fitted to the full width, rises letter by letter */
-const heroFit = document.querySelector('.hero-fit');
-function fitText(el){
-  const box = el.parentElement, cs = getComputedStyle(box);
-  const w = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-  el.style.fontSize = '100px'; el.style.fontSize = (100 * w / el.scrollWidth).toFixed(2) + 'px';
-}
-fitText(heroFit);
-const heroSplit = SplitText.create(heroFit, {type:'chars', mask:'chars'});
-fitText(heroFit);
-addEventListener('resize', () => fitText(heroFit));
-document.fonts && document.fonts.ready.then(() => { fitText(heroFit); ScrollTrigger.refresh(); });
-gsap.set(heroSplit.chars, {yPercent:110});
-function heroIntro(){
-  document.body.classList.remove('is-loading');
-  const claim = SplitText.create('.hero-claim', {type:'lines', mask:'lines'});
-  return gsap.timeline()
-    .to(heroSplit.chars, {yPercent:0, duration:1.4, ease:'expo.out', stagger:.045}, .1)
-    .from('.hero-frame', {clipPath:'inset(50% 0% 50% 0% round 4px)', duration:1.3, ease:'expo.inOut'}, 0)
-    .from('.hero-frame .footage', {scale:1.25, duration:1.6, ease:'expo.out'}, 0)
-    .from(claim.lines, {yPercent:100, duration:1, ease:'expo.out', stagger:.1}, .5)
-    .from('.hero-meta .label', {opacity:0, duration:.8}, .7)
-    .from('.hud .c', {scale:1.8, opacity:0, duration:.9, ease:'expo.out', stagger:.05}, .6)
-    .from('.hud .rec', {opacity:0, duration:.6}, .8);
-}
-const loader = document.querySelector('.loader');
-if (reduce){ loader.remove(); heroIntro().progress(1); }
-else {
-  /* loader: the mark appears, REC rolls two seconds of timecode, the iris clicks open,
-     and the mark flies into its place in the nav */
-  document.body.classList.add('is-loading');
-  const iris = makeIris(loader.querySelector('svg')), ltc = document.getElementById('ltc');
-  const lLogo = loader.querySelector('.loader-logo'), navLogo = document.querySelector('.nav .logo-light');
-  const rec = {f:0};
-  gsap.set('.nav', {autoAlpha:0});
-  const lt = gsap.timeline({delay:.15, paused:true});
-  ready3d.then(() => { attach3D(); lt.play(); });
-  lt.from(lLogo, {clipPath:'inset(100% 0% 0% 0%)', y:24, duration:1, ease:'expo.out'}, 0)
-    .from('.loader-rec, .loader-bar', {opacity:0, y:10, duration:.6, stagger:.08}, .35)
-    .to('.loader-bar b', {scaleX:1, duration:1.7, ease:'power1.inOut'}, .5)
-    .to(rec, {f:48, duration:1.7, ease:'power1.inOut', onUpdate:() => ltc.textContent = tc(rec.f / 24)}, .5);
-  [[6, 1.75], [12, 2.0], [20, 2.22]].forEach(([r, at], k) => lt.to(iris, {r, twist:k*3, duration:.18, ease:'power4.out', onUpdate:iris.render}, at));
-  lt.to('.loader-rec, .loader-bar', {opacity:0, duration:.3}, 2.3)
-    .add(() => {
-      const a = lLogo.getBoundingClientRect(), b = navLogo.getBoundingClientRect();
-      gsap.to(lLogo, {x:(b.left + b.width/2) - (a.left + a.width/2), y:(b.top + b.height/2) - (a.top + a.height/2), scale:b.height / a.height, duration:1.15, ease:'expo.inOut'});
-    }, 2.35)
-    .to(iris, {r:175, twist:40, duration:1.3, ease:'expo.inOut', onUpdate:iris.render}, 2.4)
-    .to('.nav', {autoAlpha:1, duration:.5}, 3.35)
-    .add(heroIntro, 2.9)
-    .to(lLogo, {opacity:0, duration:.2}, 3.6)
-    .add(() => loader.remove());
-}
-gsap.to('.hero-frame', {y:() => -innerHeight * .12, scale:1.08, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true, invalidateOnRefresh:true}});
-gsap.to('.hero-name', {yPercent:-35, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
-
-/* nav colour follows the band under it (keeps the logo's red dot red) */
-const navEl = document.querySelector('.nav'); let navN = 0;
-gsap.ticker.add(() => {
-  if (++navN % 5) return;
-  const y = navEl.offsetHeight / 2;
-  const hit = document.elementsFromPoint(innerWidth * .5, y).find(e => !navEl.contains(e));
-  let dark = true;
-  if (hit && !hit.closest('.lb, .loader')){ const sec = hit.closest('section, footer'); dark = sec ? sec.classList.contains('dark') : false; }
-  navEl.classList.toggle('on-light', !dark);
-  navEl.classList.toggle('scrolled', (smoother ? smoother.scrollTop() : scrollY) > innerHeight * .85);
-});
-gsap.fromTo('.hero', {clipPath:'inset(0% 0% 0% 0% round 0px)'}, {clipPath:'inset(0% 2.5% 7% 2.5% round 24px)', ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
-gsap.to('.hero-meta', {yPercent:-60, opacity:0, ease:'none', scrollTrigger:{trigger:'.hero', start:'40% top', end:'bottom top', scrub:true}});
-ScrollTrigger.create({trigger:'.hero', start:'top top', end:'bottom top', onUpdate:s => { if (s.progress > .02) setFocus(s.progress*12); }});
-
-/* manifesto: rack focus */
-const mSplit = SplitText.create('.manifesto-text', {type:'words', wordsClass:'w'});
-gsap.fromTo(mSplit.words, {filter:'blur(10px)', opacity:.15}, {filter:'blur(0px)', opacity:1, ease:'none', stagger:.12,
-  scrollTrigger:{trigger:'.manifesto-text', start:'top 80%', end:'bottom 45%', scrub:true}});
-
-/* reel: a wheel of films turns half a revolution; the reel reaches the top, AF locks, it opens to full frame */
-const focalEl = document.getElementById('focal'), focal = {v:135}, reelCta = document.querySelector('.reel-cta');
-const reelSec = document.querySelector('.reel'), cards = gsap.utils.toArray('.wcard'), featCard = cards[0];
-const mirror = featCard.querySelector('canvas.mirror'), mctx = mirror.getContext('2d'), cardAF = featCard.querySelector('.card-af');
-const reelFootObj = document.querySelector('.reel-frame .footage')._footage;
-const W = {};
-const WA = cards.map((c, k) => k === 0 ? 180 : (k * 360 / WHEEL_N + 180) % 360), wheelState = {rot:0};
-function placeCards(){
-  cards.forEach((c, k) => {
-    const a = (WA[k] + wheelState.rot) * Math.PI / 180, up = (1 + Math.cos(a)) / 2;   // 1 at 12 o'clock, 0 at 6
-    gsap.set(c, {x: W.R * Math.sin(a) - W.cw / 2, y: -W.R * Math.cos(a) - W.ch / 2, scale: .78 + .22 * up, zIndex: Math.round(up * 10)});
-  });
-}
-function layoutWheel(){
-  const vw = innerWidth, vh = innerHeight, mob = vw < 700;
-  W.cw = Math.round(mob ? Math.max(vw * .7, 240) : Math.min(Math.max(vw * .3, 300), 540)); W.ch = Math.round(W.cw * 9 / 16);
-  W.R = mob ? Math.max(vw * 1.05, W.cw * 1.5) : Math.max(vw * .56, W.cw * 1.5);
-  W.topY = vh * (mob ? .36 : .4);
-  W.cy = W.topY + W.R;
-  gsap.set(wheelEl, {top: W.cy, rotation: 0});
-  cards.forEach(c => { gsap.set(c, {width: W.cw, height: W.ch, rotation: 0, transformOrigin: '50% 50%'}); c.style.top = '0px'; });
-  placeCards();
-  mirror.width = Math.round(W.cw * Math.min(devicePixelRatio || 1, 2)); mirror.height = Math.round(W.ch * Math.min(devicePixelRatio || 1, 2));
-}
-layoutWheel();
-const cardInset = () => {
-  const vw = innerWidth, vh = innerHeight, l = vw / 2 - W.cw / 2, t = W.topY - W.ch / 2;
-  return `inset(${(t / vh * 100).toFixed(3)}% ${((vw - l - W.cw) / vw * 100).toFixed(3)}% ${((vh - t - W.ch) / vh * 100).toFixed(3)}% ${(l / vw * 100).toFixed(3)}% round 6px)`;
-};
-// the reel card shows the same picture the full frame will open on (centre crop matches the 135 mm start)
-gsap.ticker.add(() => {
-  if (featCard.style.visibility === 'hidden' || !reelFootObj.canvas) return;
-  const r = reelSec.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
-  const src = reelFootObj.canvas, z = 1.9, sw = src.width / z, sh = src.height / z;
-  const k = Math.max(sw / mirror.width, sh / mirror.height), cw = mirror.width * k, ch = mirror.height * k;
-  mctx.drawImage(src, (src.width - cw) / 2, (src.height - ch) / 2, cw, ch, 0, 0, mirror.width, mirror.height);
-});
-const T_ROT = 5, T_OPEN = 5.9, T_FULL = 8.3;
-let leaked = false;
-const rtl = gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'.reel', start:'top top', end:'+=380%', pin:true, scrub:1, invalidateOnRefresh:true,
-  onRefresh: layoutWheel,
-  onUpdate:s => {
-    const t = rtl.time();
-    reelCta.classList.toggle('on', s.progress > .93);
-    reelSec.classList.toggle('dark', t > T_OPEN + .9);
-    cardAF.classList.toggle('lock', t > T_ROT + .45);
-    if (t > T_OPEN && !leaked){ leaked = true; leak(reelLens, .9, 1); } else if (t < T_OPEN) leaked = false;
-  }}});
-rtl.fromTo(wheelState, {rot:0}, {rot:180, ease:'power2.inOut', duration:T_ROT, onUpdate:placeCards}, 0)
-   .fromTo('.reel-title', {y:40, opacity:0}, {y:0, opacity:1, duration:1.2, ease:'power2.out'}, .2)
-   .to(cardAF, {opacity:1, duration:.3}, T_ROT - .2)
-   .fromTo(cardAF, {scale:1.25}, {scale:1, duration:.5, ease:'power3.out', immediateRender:false}, T_ROT - .2)
-   .to('.reel-title, .reel-head', {opacity:0, y:-30, duration:.6}, T_OPEN - .5)
-   .set('.reel-frame', {visibility:'visible'}, T_OPEN)
-   .set(featCard, {visibility:'hidden'}, T_OPEN)
-   .fromTo('.reel-frame', {clipPath:cardInset}, {clipPath:'inset(0% 0% 0% 0% round 0px)', duration:T_FULL - T_OPEN, ease:'power2.inOut', immediateRender:false}, T_OPEN)
-   .fromTo('.reel-frame .footage', {scale:1.9}, {scale:1, duration:T_FULL - T_OPEN, ease:'power2.inOut', immediateRender:false}, T_OPEN)
-   .to(focal, {v:24, duration:T_FULL - T_OPEN, ease:'power2.inOut', onUpdate:() => { focalEl.textContent = Math.round(focal.v); if (reelLens) reelLens.u.distort = (135 - focal.v)/111*.32; }}, T_OPEN)
-   .to(cards.slice(1), {opacity:0, duration:.8}, T_OPEN + .2)
-   .to('.letterbox', {scaleY:1, ease:'power3.inOut', duration:.8}, T_FULL - .4)
-   .to(reelCta, {opacity:1, duration:.5}, T_FULL)
-   .to({}, {duration:.6});
-gsap.set('.reel-frame .footage', {scale:1.9});
-
-/* dark bands open from a rounded card to full bleed */
-gsap.utils.toArray('.process, .footer').forEach(sec => gsap.fromTo(sec,
-  {clipPath:'inset(6% 2.5% 0% 2.5% round 24px)'}, {clipPath:'inset(0% 0% 0% 0% round 0px)', ease:'none',
-  scrollTrigger:{trigger:sec, start:'top bottom', end: sec.classList.contains('footer') ? 'top 25%' : 'top top', scrub:true}}));
-
-/* works: horizontal track */
-const mm = gsap.matchMedia();
-mm.add('(min-width: 900px)', () => {
-  const dist = () => track.scrollWidth - innerWidth;
-  const h = gsap.to(track, {x:() => -dist(), ease:'none', scrollTrigger:{trigger:'.works-pin', start:'top top', end:() => '+=' + dist(), pin:true, scrub:1, invalidateOnRefresh:true,
-    onUpdate:s => { ghostV = s.getVelocity(); }}});
-  gsap.utils.toArray('.frame-media .footage').forEach(f => gsap.fromTo(f, {xPercent:-6}, {xPercent:6, ease:'none',
-    scrollTrigger:{trigger:f.closest('.frame'), containerAnimation:h, start:'left right', end:'right left', scrub:true}}));
-  gsap.utils.toArray('.frame').forEach(fr => {
-    const st = {trigger:fr, containerAnimation:h, start:'left 98%', end:'left 40%', scrub:true};
-    gsap.fromTo(fr.querySelector('.frame-media'), {clipPath:'inset(14% 0% 14% 0%)'}, {clipPath:'inset(0% 0% 0% 0%)', ease:'none', scrollTrigger:st});
-    gsap.fromTo(fr.querySelector('.footage canvas, .footage video'), {scale:1.3}, {scale:1, ease:'none', scrollTrigger:st});
-    gsap.from(fr.querySelector('.frame-info'), {y:30, opacity:0, ease:'none', scrollTrigger:st});
-  });
-});
-document.querySelectorAll('.frame').forEach(fr => {
-  const f = fr.querySelector('.footage')._footage;
-  fr.addEventListener('pointerenter', () => gsap.to(f, {speed:1, duration:.6}));
-  fr.addEventListener('pointerleave', () => gsap.to(f, {speed:.35, duration:.6}));
-});
-
-/* works: ghosting — the faster the strip moves, the more each reel stretches, shears and splits into RGB trails */
-let ghostV = 0, ghostS = 0, lastSL = null;
-const medias = gsap.utils.toArray('.frame-media'), worksPin = document.querySelector('.works-pin');
-gsap.ticker.add(() => {
-  if (innerWidth < 900){                                     // native swipe on phones: velocity from scrollLeft
-    if (lastSL !== null) ghostV = (track.scrollLeft - lastSL) * -60;
-    lastSL = track.scrollLeft;
-  }
-  ghostS += (gsap.utils.clamp(-4000, 4000, ghostV) - ghostS) * .12;
-  ghostV *= .9;
-  const r = worksPin.getBoundingClientRect();
-  if (r.bottom < 0 || r.top > innerHeight) return;
-  const v = ghostS / 1000, a = Math.abs(v);
-  if (a < .02){
-    if (medias[0].style.transform){ medias.forEach(m => { m.style.transform = ''; m.style.boxShadow = ''; }); }
-    return;
-  }
-  const skew = gsap.utils.clamp(-14, 14, v * 6), sx = 1 + Math.min(.12, a * .05), sy = 1 - Math.min(.06, a * .025);
-  const tr = (v * 10).toFixed(1), sh = `${tr}px 0 0 rgba(255,22,32,.55), ${-tr}px 0 0 rgba(40,170,255,.45)`;
-  medias.forEach(m => { m.style.transform = `skewX(${skew}deg) scale(${sx},${sy})`; m.style.boxShadow = sh; });
-});
-
-/* process: slate claps → storyboard draws → panel becomes the real shot → shot shrinks into the edit */
-const steps = gsap.utils.toArray('.step'), bars = gsap.utils.toArray('.step-bar b');
-const flash = document.querySelector('.flash'), stage = document.querySelector('.stage');
-const panels = gsap.utils.toArray('.panel svg'), shotHost = document.querySelector('.shot .footage'), lut = document.getElementById('lut');
-const insetOf = el => {
-  const W = stage.offsetWidth, H = stage.offsetHeight, fig = el.parentElement, board = fig.parentElement;
-  const l = board.offsetLeft + fig.offsetLeft + el.offsetLeft, t = board.offsetTop + fig.offsetTop + el.offsetTop;
-  return `inset(${(t/H*100).toFixed(2)}% ${((W - l - el.offsetWidth)/W*100).toFixed(2)}% ${((H - t - el.offsetHeight)/H*100).toFixed(2)}% ${(l/W*100).toFixed(2)}%)`;
-};
-let curStep = -1;
-function setStep(i){
-  if (i === curStep) return; curStep = i;
-  steps.forEach((s,k) => gsap.to(s, {autoAlpha: k === i ? 1 : 0, y: k === i ? 0 : (k < i ? -24 : 24), duration: k === i ? .6 : .25, ease:'power3.out', delay: k === i ? .28 : 0, overwrite:true}));
-}
-gsap.set(steps, {autoAlpha:0}); setStep(0);
-const grade = {v:0}, CUTS = [0, .4, .68, 1];
-const ptl = gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'.process', start:'top top', end:'+=380%', pin:true, scrub:.8, invalidateOnRefresh:true,
-  onUpdate:s => {
-    const p = s.progress;
-    setStep(p < CUTS[1] ? 0 : p < CUTS[2] ? 1 : 2);
-    bars.forEach((b,k) => gsap.set(b, {scaleX: gsap.utils.clamp(0, 1, (p - CUTS[k])/(CUTS[k+1] - CUTS[k]))}));
-  }}});
-const syncSlate = () => gsap.set('.slate .stick', {rotation:-slateState.clap});
-ptl.to(slateState, {clap:24, duration:.5, ease:'power2.out', onUpdate:syncSlate}, 0)
-   .to(slateState, {clap:0, duration:.15, ease:'power4.in', onUpdate:syncSlate}, .5)
-   .fromTo(flash, {opacity:0}, {opacity:.28, duration:.02, immediateRender:false}, .65)
-   .to(flash, {opacity:0, duration:.35}, .67)
-   .to('.slate', {y:'+=80', rotation:-7, opacity:0, duration:.7, ease:'power2.in'}, 1.1)
-   .to(slateState, {out:1, duration:.8, ease:'power2.in'}, 1.1)
-   .from('.panel', {opacity:0, y:30, stagger:.25, duration:.5}, 1.5)
-   .from('.panel .ink', {strokeDashoffset:1, stagger:.07, duration:.7}, 1.6)
-   .set('.shot', {visibility:'visible'}, 4)
-   .fromTo('.shot', {clipPath:() => insetOf(panels[2])}, {clipPath:'inset(0% 0% 0% 0%)', duration:1.3, ease:'power2.inOut', immediateRender:false}, 4)
-   .to('.panel', {opacity:0, duration:.5}, 4.2)
-   .from('.shot .vf', {opacity:0, duration:.4}, 5)
-   .to('.shot', {clipPath:'inset(0% 16.7% 40% 16.7%)', duration:1.1, ease:'power2.inOut'}, 6.6)
-   .to('.shot .vf', {left:'18.5%', right:'18.5%', top:'2.5%', bottom:'43%', duration:1.1, ease:'power2.inOut'}, 6.6)
-   .from('.trk-in', {opacity:0, y:16, stagger:.1, duration:.5}, 7)
-   .from('.lane i', {xPercent:140, opacity:0, stagger:.06, duration:.7, ease:'power2.out'}, 7.1)
-   .fromTo('.playhead', {left:'0%'}, {left:'100%', duration:2.4}, 7.8)
-   .to(grade, {v:1, duration:1.1, ease:'power1.inOut', onUpdate:() => {
-      const g = grade.v; shotHost.style.filter = `saturate(${.3 + .7*g}) contrast(${.7 + .3*g}) brightness(${1.15 - .15*g})`;
-      lut.textContent = g > .5 ? 'Rec.709' : 'Log C';
-    }}, 8.3)
-   .to({}, {duration:.6});
-
-gsap.to('.marquee', {xPercent:-50, duration:40, ease:'none', repeat:-1});
-
-gsap.utils.toArray('.h-xl, .svc-t').forEach(el => {
-  const sp = SplitText.create(el, {type:'lines', mask:'lines'});
-  gsap.from(sp.lines, {yPercent:100, duration:1.1, ease:'expo.out', stagger:.08, scrollTrigger:{trigger:el, start:'top 88%'}});
-});
-
-/* footer: the name fills the width and rises letter by letter */
-const ftFit = document.querySelector('.ft-fit');
-function fitName(){
-  const box = ftFit.parentElement, cs = getComputedStyle(box);
-  const w = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-  ftFit.style.fontSize = '100px';
-  ftFit.style.fontSize = (100 * w / ftFit.scrollWidth).toFixed(2) + 'px';
-}
-fitName();
-const ftSplit = SplitText.create(ftFit, {type:'chars', charsClass:'ch', mask:'chars'});
-fitName();
-gsap.from(ftSplit.chars, {yPercent:110, ease:'none', stagger:.06,
-  scrollTrigger:{trigger:'.ft-name', start:'top bottom', endTrigger:'.footer', end:'bottom bottom', scrub:.6}});
-gsap.from('.ft-top > *, .ft-mid', {y:40, opacity:0, duration:1, ease:'expo.out', stagger:.1, scrollTrigger:{trigger:'.footer', start:'top 70%'}});
-addEventListener('resize', () => { fitName(); ScrollTrigger.refresh(); });
-document.fonts && document.fonts.ready.then(fitName);
-if (fine){
-  const lifts = ftSplit.chars.map(c => gsap.quickTo(c, 'y', {duration:.6, ease:'power3'}));
-  document.querySelector('.ft-name').addEventListener('pointermove', e => {
-    ftSplit.chars.forEach((c, k) => { const r = c.getBoundingClientRect(); const d = Math.abs(e.clientX - (r.left + r.width/2)); lifts[k](-Math.max(0, 1 - d/220) * r.height * .14); });
-  });
-  document.querySelector('.ft-name').addEventListener('pointerleave', () => lifts.forEach(q => q(0)));
-}
-document.getElementById('rewind').addEventListener('click', () => smoother ? gsap.to(smoother, {scrollTop:0, duration:2.4, ease:'power3.inOut'}) : scrollTo({top:0}));
-
-/* lightbox: opens like a lens from the click point */
-const lb = document.getElementById('lb'), lbTitle = document.getElementById('lbTitle'), lbMeta = document.getElementById('lbMeta');
-const lbBar = document.getElementById('lbBar'), lbTc = document.getElementById('lbTc'), lbDur = document.getElementById('lbDur'), lbIcon = document.getElementById('lbIcon'), lbPlay = document.getElementById('lbPlay');
-let lbOpen = false, lbLen = 134, lbOrigin = null, lastFocus = null, lbVid = false;
-const lbVideo = document.getElementById('lbVideo'), lbMute = document.getElementById('lbMute'), lbMedia = document.getElementById('lbMedia');
-lbMute.addEventListener('click', () => { lbVideo.muted = !lbVideo.muted; lbMute.textContent = lbVideo.muted ? 'Som desligado' : 'Som ligado'; });
-const PAUSE = 'M6 4h4v16H6zM14 4h4v16h-4z', PLAY = 'M6 3.5v17l14-8.5z';
-function openLB(id, x, y, rect){
-  const p = PROJECTS.find(p => p.id === id);
-  lbTitle.textContent = p ? p.title : 'Showreel';
-  lbMeta.textContent = p ? `${p.client} · ${p.year || p.tag}` : 'Showreel 2026';
-  lbDur.textContent = p ? p.dur : '02:14';
-  const [m,s] = lbDur.textContent.split(':').map(Number); lbLen = m*60 + s;
-  lb.hidden = false; lbOpen = true; lastFocus = document.activeElement;
-  lbVid = !!(p && p.full);
-  lbVideo.hidden = !lbVid; lbMute.hidden = !lbVid; lbMedia.style.visibility = lbVid ? 'hidden' : '';
-  if (lbVid){
-    lbVideo.src = p.full; lbVideo.currentTime = 0; lbVideo.muted = false; lbMute.textContent = 'Som ligado';
-    lbVideo.play().catch(() => { lbVideo.muted = true; lbMute.textContent = 'Som desligado'; lbVideo.play().catch(()=>{}); });
-    lbFoot.visible = false;
-  } else { lbFoot.setScene(p ? p.scene : 'montage'); lbFoot.t = 0; lbFoot.visible = true; lbFoot.playing = true; }
-  lbIcon.setAttribute('d', PAUSE); lbPlay.setAttribute('aria-label','Pausar');
-  smoother && smoother.paused(true);
-  const R = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-  lbOrigin = rect && p
-    ? {from:`inset(${rect.top}px ${innerWidth - rect.right}px ${innerHeight - rect.bottom}px ${rect.left}px)`, to:'inset(0px 0px 0px 0px)'}
-    : {from:`circle(0px at ${x}px ${y}px)`, to:`circle(${R}px at ${x}px ${y}px)`};
-  gsap.fromTo(lb, {clipPath:lbOrigin.from}, {clipPath:lbOrigin.to, duration:1.1, ease:'expo.inOut'});
-  leak(lbLens, 1, 1.8);
-  gsap.from('.lb-hud > *', {opacity:0, y:16, duration:.7, stagger:.1, delay:.6});
-  document.getElementById('lbClose').focus({preventScroll:true});
-}
-function closeLB(){
-  if (!lbOpen) return; lbOpen = false;
-  gsap.to(lb, {clipPath:lbOrigin.from, duration:.8, ease:'expo.inOut', onComplete:() => {
-    lbVideo.pause(); lb.hidden = true; lbFoot.visible = false; smoother && smoother.paused(false); lastFocus && lastFocus.focus({preventScroll:true});
-  }});
-}
-document.addEventListener('click', e => {
-  const b = e.target.closest('[data-open]'); if (!b) return;
-  const r = b.getBoundingClientRect(); openLB(b.dataset.open, e.clientX || r.left + r.width/2, e.clientY || r.top + r.height/2, r);
-});
-document.getElementById('lbClose').addEventListener('click', closeLB);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); if (e.key === ' ' && lbOpen){ e.preventDefault(); lbPlay.click(); } });
-lbPlay.addEventListener('click', () => {
-  let on;
-  if (lbVid){ lbVideo.paused ? lbVideo.play() : lbVideo.pause(); on = !lbVideo.paused; }
-  else { lbFoot.playing = !lbFoot.playing; on = lbFoot.playing; }
-  lbIcon.setAttribute('d', on ? PAUSE : PLAY); lbPlay.setAttribute('aria-label', on ? 'Pausar' : 'Reproduzir');
-});
-gsap.ticker.add(() => { if (!lbOpen) return; if (lbVid && lbVideo.duration) lbLen = lbVideo.duration; const t = lbVid ? lbVideo.currentTime : lbFoot.t % lbLen; lbTc.textContent = tc(t); lbBar.style.transform = `scaleX(${t/lbLen})`; });
-
-document.fonts && document.fonts.ready.then(() => ScrollTrigger.refresh());
-}
-
-/* brief → WhatsApp */
-const brief = document.getElementById('brief'), send = document.getElementById('send');
-function updateBrief(){
-  const d = new FormData(brief);
-  const txt = `Olá, Jason! Aqui é ${d.get('nome') || '—'}.\nProjeto: ${d.get('tipo')}\nSegmento: ${d.get('segmento')}\n\n${d.get('msg') || ''}`;
-  send.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(txt)}`;
-}
-brief.addEventListener('input', updateBrief); brief.addEventListener('change', updateBrief); brief.addEventListener('submit', e => e.preventDefault()); updateBrief();
-document.getElementById('copyMail').addEventListener('click', e => {
-  const btn = e.currentTarget, el = document.getElementById('mail');
-  const fallback = () => { getSelection().selectAllChildren(el); btn.textContent = 'Selecionado, use Ctrl+C'; };
-  try { navigator.clipboard.writeText(el.textContent).then(() => { btn.textContent = 'Copiado'; setTimeout(() => btn.textContent = 'Copiar e-mail', 2000); }, fallback); } catch(_) { fallback(); }
-});
 </script>
-
 </body>
 </html>

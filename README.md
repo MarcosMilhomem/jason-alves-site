@@ -1,29 +1,36 @@
-# Jason Alves — site portfólio
+# Jason Alves · site
 
-Site estático (HTML + GSAP 3.13 + Three.js 0.160 via CDN). Não tem build: a Vercel publica a pasta como está.
+Site estático: um único `index.html` com HTML, CSS e um pouco de JavaScript (player, formulário para WhatsApp, copiar e-mail). Sem bibliotecas de animação e sem build. A Vercel publica a pasta como está.
 
-## Estrutura
-- `index.html` — página inteira (estilos e scripts inline).
-- `scenes3d.js` — íris da abertura e claquete em 3D (Three.js, módulo ES). Se não carregar, o site usa as versões em SVG.
-- `media/` — logo (versões clara e escura), vídeos e poster.
+## Estrutura da página
+1. Cabeçalho fixo com o botão **Pedir orçamento**
+2. Hero: o que ele faz, os dois botões e o vídeo vertical
+3. Trabalhos: grade de cards (o primeiro é real, os outros são exemplos)
+4. Serviços
+5. Como funciona (3 etapas)
+6. Faixa vermelha com os segmentos atendidos
+7. Contato: e-mail, redes e formulário que abre o WhatsApp
+8. Rodapé
 
 ## Trocar ou adicionar trabalhos
-No `index.html`, procure `const PROJECTS = [`. Cada item aceita:
+Na seção `#trabalhos` do `index.html`, cada card é um `<li class="work">`. Para um trabalho com vídeo, use o formato do primeiro card:
 
-```js
-{id:'slug', title:'Nome do filme', client:'Cliente', year:2026, vertical:true,
- video:'media/arquivo-loop.mp4',   // prévia muda em loop (540×960, H.264, sem áudio)
- full:'media/arquivo.mp4',         // versão com som para o player
- dur:'00:30'}
+```html
+<button class="work-media" type="button" data-play="media/arquivo.mp4" data-title="Título · Cliente">
+  <img src="media/arquivo-poster.jpg" alt="Descrição da imagem" loading="lazy">
+  <span class="badge">Assistir</span>
+</button>
 ```
 
-Itens sem `video` usam as prévias geradas em canvas.
-
-### Preparar vídeos (ffmpeg)
+### Preparar vídeos e capas (ffmpeg)
 ```bash
-ffmpeg -i original.mov -vf scale=540:960 -c:v libx264 -crf 27 -preset slow -pix_fmt yuv420p -an -movflags +faststart media/nome-loop.mp4
 ffmpeg -i original.mov -vf scale=720:1280 -c:v libx264 -crf 24 -preset slow -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart media/nome.mp4
+ffmpeg -ss 4 -i original.mov -frames:v 1 -vf scale=540:960 -q:v 4 media/nome-poster.jpg
 ```
 
 ## Dados provisórios para trocar
-E-mail (`contato@jasonalves.com.br`), WhatsApp (`5511999999999`), links de Instagram/Vimeo/YouTube e os projetos de exemplo.
+E-mail (`contato@jasonalves.com.br`), WhatsApp (`5511999999999`, aparece em dois lugares), links de Instagram e Vimeo, e os cinco trabalhos marcados como **Exemplo**.
+
+## Versões anteriores (animadas)
+- `referencia-producao-animada`: o site animado que estava no ar antes desta versão.
+- `referencia-animada`: a versão animada completa, com partículas, leque, números com vídeo e índice lateral.

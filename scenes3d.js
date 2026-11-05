@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
-const DPR = Math.min(window.devicePixelRatio || 1, 2);
+const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
 
 function makeRenderer(canvas){
   const r = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'});
@@ -165,7 +165,6 @@ class Slate3D {
     const cv = this.canvas = document.createElement('canvas'); cv.className = 'slate3d'; cv.setAttribute('aria-hidden','true');
     host.appendChild(cv);
     const R = this.renderer = makeRenderer(cv);
-    R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap;
     const scene = this.scene = new THREE.Scene(); envFor(R, scene); scene.environmentIntensity = .7;
     this.camera = new THREE.PerspectiveCamera(28, 1.6, 1, 500); this.camera.position.set(0, 2, 82);
 
@@ -186,10 +185,13 @@ class Slate3D {
     const plate = new THREE.Mesh(new RoundedBoxGeometry(2.2, 4.4, .25, 2, .08), metal); plate.position.set(-14 + 1.3, 15, .9); rig.add(plate);
     [-1, 1].forEach(s => { const sc = new THREE.Mesh(new THREE.CylinderGeometry(.22, .22, .2, 16), metal); sc.rotation.x = Math.PI/2; sc.position.set(-14 + 1.3, 15 + s*1.4, 1.05); rig.add(sc); });
 
-    const shadowCatcher = new THREE.Mesh(new THREE.PlaneGeometry(200, 200), new THREE.ShadowMaterial({opacity:.35}));
-    shadowCatcher.position.z = -6; shadowCatcher.receiveShadow = true; scene.add(shadowCatcher);
-    const key = new THREE.DirectionalLight(0xffffff, 2.4); key.position.set(-30, 40, 60); key.castShadow = true;
-    key.shadow.mapSize.set(1024, 1024); key.shadow.camera.left = -40; key.shadow.camera.right = 40; key.shadow.camera.top = 40; key.shadow.camera.bottom = -40; key.shadow.radius = 6;
+    // soft contact shadow baked into a texture (no shadow map pass every frame)
+    const sc = document.createElement('canvas'); sc.width = sc.height = 128; const sx = sc.getContext('2d');
+    const gr = sx.createRadialGradient(64, 64, 4, 64, 64, 64); gr.addColorStop(0, 'rgba(0,0,0,.55)'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+    sx.fillStyle = gr; sx.fillRect(0, 0, 128, 128);
+    const blob = new THREE.Mesh(new THREE.PlaneGeometry(46, 40), new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(sc), transparent:true, depthWrite:false}));
+    blob.position.set(3, -4, -6); rig.add(blob);
+    const key = new THREE.DirectionalLight(0xffffff, 2.4); key.position.set(-30, 40, 60); 
     scene.add(key);
     const rim = new THREE.DirectionalLight(0xff3b30, 1.2); rim.position.set(40, 10, -20); scene.add(rim);
     const fill = new THREE.DirectionalLight(0xffe6cc, .5); fill.position.set(30, -10, 40); scene.add(fill);

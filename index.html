@@ -55,7 +55,7 @@ em{font-family:var(--f-sans);font-style:italic;font-weight:600;color:var(--rec);
 .h-xl em{font-size:1.12em;letter-spacing:-.02em}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.05;mix-blend-mode:overlay;animation:grain .9s steps(6) infinite}
+.grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.035}
 @keyframes grain{0%,100%{transform:translate(0,0)}25%{transform:translate(-5%,4%)}50%{transform:translate(4%,-6%)}75%{transform:translate(-3%,5%)}}
 
 /* Cursor: autofocus box */
@@ -87,9 +87,9 @@ em{font-family:var(--f-sans);font-style:italic;font-weight:600;color:var(--rec);
 /* Nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:calc(18px + env(safe-area-inset-top,0px)) var(--gr) 18px var(--gl);color:#fff;transition:color .35s}
 .nav.on-light{color:var(--ink)}
-.nav::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .35s,background-color .35s;background:rgba(6,6,6,.45);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px)}
+.nav::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .35s,background-color .35s;background:rgba(6,6,6,.82)}
 .nav.scrolled::before{opacity:1}
-.nav.on-light::before{background:rgba(245,245,244,.78)}
+.nav.on-light::before{background:rgba(245,245,244,.94)}
 .brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 .brand img{height:34px;width:auto;display:block}
 .nav .logo-dark,.nav.on-light .logo-light{display:none}.nav.on-light .logo-dark{display:block}
@@ -106,7 +106,7 @@ a:hover .roll>span{transform:translateY(-1.3em)}
 
 /* Hero */
 .hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;background:var(--ink)}
-.hero-bg{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;filter:blur(38px) brightness(.32) saturate(1.3);pointer-events:none}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:.85}
 .hero-meta{position:absolute;left:0;right:0;top:calc(104px + env(safe-area-inset-top,0px));z-index:3;display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
 .hero-meta .label{text-align:right;color:rgba(245,245,244,.7);line-height:1.7}
 .hero-frame{--fh:min(58vh,620px);position:absolute;left:50%;top:15vh;z-index:2;height:var(--fh);width:calc(var(--fh) * 9 / 16);margin-left:calc(var(--fh) * -9 / 32);overflow:hidden;border-radius:4px;box-shadow:0 40px 120px -20px rgba(0,0,0,.7)}
@@ -130,7 +130,7 @@ a:hover .roll>span{transform:translateY(-1.3em)}
 /* Manifesto */
 .manifesto{padding-block:clamp(140px,22vh,260px)}
 .manifesto-text{margin:0;max-width:19ch;font-weight:400;font-size:clamp(36px,5.4vw,96px);line-height:1.02;letter-spacing:-.035em;text-wrap:balance}
-.manifesto-text .w{display:inline-block;will-change:filter,opacity}
+.manifesto-text .w{display:inline-block}
 .manifesto-sub{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-top:72px;align-items:flex-end}
 .manifesto-sub p{margin:0;max-width:44ch;color:var(--muted);font-size:17px}
 
@@ -387,7 +387,7 @@ form.brief{display:flex;flex-direction:column;gap:32px}
 <main>
 
 <section class="hero dark" id="topo">
-  <video class="hero-bg" src="media/recanto-loop.mp4" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
+  <img class="hero-bg" src="media/hero-bg.jpg" alt="" aria-hidden="true">
   <div class="hero-meta wrap">
     <p class="hero-claim">Filmes que a gente sente antes de entender.</p>
     <span class="label">Filmmaker<br>Publicidade · Reels · Filmes de marca</span>
@@ -655,7 +655,7 @@ const SCENES = {
     init(r, w, h){
       const pal = [[255,170,80],[255,96,60],[90,170,255],[255,225,180],[255,140,40]];
       return {
-        bokeh: Array.from({length:44}, () => ({x:r()*w, y:h*(.12+r()*.8), rad:h*(.03+r()*.08), c:pal[r()*pal.length|0], v:(r()-.5)*.6, ph:r()*TAU})),
+        bokeh: Array.from({length:26}, () => ({x:r()*w, y:h*(.12+r()*.8), rad:h*(.03+r()*.08), c:pal[r()*pal.length|0], v:(r()-.5)*.6, ph:r()*TAU})),
         cars: Array.from({length:14}, () => ({x:r()*w, y:h*(.74+r()*.12), v:(r()>.5?1:-1)*(w*(.05+r()*.12)), c: r()>.5?[255,60,40]:[255,235,200]})),
         flares: Array.from({length:3}, () => ({x:r()*w, y:h*(.25+r()*.45), v:(r()-.5)*w*.01}))
       };
@@ -892,7 +892,7 @@ class Footage {
     this.visible = false; this.playing = true;
     if (host.dataset.video){
       const v = document.createElement('video');
-      Object.assign(v,{src:host.dataset.video, muted:true, loop:true, playsInline:true, autoplay:true, preload:'auto'});
+      Object.assign(v,{src:host.dataset.video, muted:true, loop:true, playsInline:true, autoplay:true, preload: host.closest('.hero') ? 'auto' : 'metadata'});
       if (host.dataset.poster) v.poster = host.dataset.poster;
       host.appendChild(v); this.video = v; return;
     }
@@ -935,6 +935,9 @@ void main(){
   float b = (uBlur + smoothstep(uFocusR, uFocusR + .45, d) * uDof) / 900.;
   vec2 ab = c * uAberr * (1. + r2 * 5.);
   vec3 col = vec3(0.);
+  if (b < .0004){
+    col = vec3(texture2D(uTex, uv + ab).r, texture2D(uTex, uv).g, texture2D(uTex, uv - ab).b);
+  } else {
   for (int i = 0; i < 20; i++){
     float fi = float(i);
     float a = fi * 2.39996;
@@ -944,6 +947,7 @@ void main(){
     col.b += texture2D(uTex, uv + o - ab).b;
   }
   col /= 20.;
+  }
   vec2 lp = vec2(.82 + .12 * sin(uTime * .6), .25 + .1 * cos(uTime * .4));
   col += vec3(1., .5, .2) * smoothstep(.95, 0., length((vUv - lp) * vec2(uAspect, 1.))) * uLeak;
   col += vec3(1., .82, .62) * uLeak * .22;
@@ -974,7 +978,7 @@ class Lens {
     f.lens = this; this.ok = true; this.fresh = true; this.resize();
   }
   resize(){
-    const W = this.f.host.offsetWidth || 640, H = this.f.host.offsetHeight || 360, d = Math.min(1.5, devicePixelRatio || 1) * .85;
+    const W = this.f.host.offsetWidth || 640, H = this.f.host.offsetHeight || 360, d = Math.min(1.25, devicePixelRatio || 1) * .6;
     this.cv.width = Math.min(1800, Math.round(W*d)); this.cv.height = Math.round(this.cv.width * H / W);
     this.gl.viewport(0, 0, this.cv.width, this.cv.height); this.fresh = true;
   }
@@ -1004,7 +1008,7 @@ const track = document.querySelector('.track');
 track.innerHTML = PROJECTS.map(p => `
   <article class="frame${p.vertical ? ' v' : ''}">
     <div class="frame-media">
-      <div class="footage" data-scene="${p.scene}" data-res=".42" data-rate=".35" ${p.video ? `data-video="${p.video}"` : ''}></div>
+      <div class="footage" data-scene="${p.scene}" data-res=".3" data-rate=".35" ${p.video ? `data-video="${p.video}"` : ''}></div>
       ${p.tag ? `<span class="tag label"><span class="dot"></span>${p.tag}</span>` : ''}
       <button class="open" data-open="${p.id}" data-cursor="Assistir" aria-label="Assistir ${p.title}"></button>
     </div>
@@ -1019,7 +1023,7 @@ const mset = '<div class="marquee-set">' + CLIENTS.map(c => `<span>${c}</span>`)
 document.querySelector('.marquee').innerHTML = mset + mset.replace('class="marquee-set"','class="marquee-set" aria-hidden="true"');
 const WHEEL_N = 8, wheelEl = document.querySelector('.wheel');
 wheelEl.innerHTML = '<div class="wcard feat"><canvas class="mirror"></canvas><div class="card-af"><i></i><i></i><i></i><i></i></div></div>' +
-  PROJECTS.slice(0, WHEEL_N - 1).map(p => `<div class="wcard"><div class="footage" ${p.video ? `data-video="${p.video}"` : `data-scene="${p.scene}"`} data-res=".32" data-rate=".6"></div><span class="wtag">${p.title}</span></div>`).join('');
+  PROJECTS.slice(0, WHEEL_N - 1).map(p => `<div class="wcard"><div class="footage" ${p.video ? `data-video="${p.video}"` : `data-scene="${p.scene}"`} data-res=".22" data-rate=".6"></div><span class="wtag">${p.title}</span></div>`).join('');
 document.querySelectorAll('.footage').forEach(mountFootage);
 const lbFoot = document.getElementById('lbMedia')._footage;
 const previewFoot = document.querySelector('.preview .footage')._footage;
@@ -1038,16 +1042,18 @@ const tc = s => { const f = Math.floor(s*24); return [f/86400|0, (f/1440|0)%60, 
 /* render loop: draw only what is on screen, 30 fps */
 let acc = 0, heroTime = 0;
 const tcEl = document.getElementById('tc');
+let visN = 0;
 function tick(dt){
   acc += dt; heroTime += dt; velAb *= .92;
-  const step = acc >= 1/30, vh = innerHeight, vw = innerWidth;
+  const step = acc >= 1/30, vh = innerHeight, vw = innerWidth, measure = (++visN % 4) === 0;
+  if (document.hidden) return;
   for (const f of footages){
-    if (!f.manual){ const r = f.host.getBoundingClientRect(); f.visible = r.width > 0 && r.bottom > -100 && r.top < vh + 100 && r.right > -100 && r.left < vw + 100; }
+    if (measure && !f.manual){ const r = f.host.getBoundingClientRect(); f.visible = r.width > 0 && r.bottom > -60 && r.top < vh + 60 && r.right > -60 && r.left < vw + 60; }
     if (!f.visible){ if (f.video) f.video.pause(); continue; }
     let drew = false;
     if (f.video){ if (f.video.paused) f.video.play().catch(()=>{}); }
     else if (step && f.playing){ f.t += acc*f.speed; try { f.draw(); drew = true; } catch(err){ f.playing = false; } }
-    if (f.lens) f.lens.render(heroTime, drew);
+    if (f.lens && step) f.lens.render(heroTime, drew);
   }
   if (step){ tcEl.textContent = tc(heroTime); acc = 0; }
 }
@@ -1065,7 +1071,7 @@ if (!hasGsap){
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 gsap.ticker.add((t, dms) => tick(Math.min(.05, dms/1000)));
 
-const smoother = reduce ? null : ScrollSmoother.create({wrapper:'#smooth-wrapper', content:'#smooth-content', smooth:1.1, effects:true, smoothTouch:.1});
+const smoother = reduce ? null : ScrollSmoother.create({wrapper:'#smooth-wrapper', content:'#smooth-content', smooth:.9, effects:true, smoothTouch:false});
 const heroFoot = document.querySelector('.hero .footage');
 const heroLens = null;   // hero shows the footage as shot — no lens processing
 const reelLens = mkLens(document.querySelector('.reel .footage')._footage, {vig:.4});
@@ -1307,7 +1313,6 @@ document.querySelectorAll('.frame').forEach(fr => {
 
 /* works: ghosting — the faster the strip moves, the more each reel stretches, shears and splits into RGB trails */
 let ghostV = 0, ghostS = 0, lastSL = null;
-const gBlur = document.querySelector('#ghost feGaussianBlur'), gR = document.querySelectorAll('#ghost feOffset')[0], gB = document.querySelectorAll('#ghost feOffset')[1];
 const medias = gsap.utils.toArray('.frame-media'), worksPin = document.querySelector('.works-pin');
 gsap.ticker.add(() => {
   if (innerWidth < 900){                                     // native swipe on phones: velocity from scrollLeft
@@ -1320,13 +1325,12 @@ gsap.ticker.add(() => {
   if (r.bottom < 0 || r.top > innerHeight) return;
   const v = ghostS / 1000, a = Math.abs(v);
   if (a < .02){
-    if (medias[0].style.filter){ medias.forEach(m => { m.style.filter = ''; m.style.transform = ''; }); }
+    if (medias[0].style.transform){ medias.forEach(m => { m.style.transform = ''; m.style.boxShadow = ''; }); }
     return;
   }
-  gBlur.setAttribute('stdDeviation', `${(a * 7).toFixed(2)} 0`);
-  gR.setAttribute('dx', (v * 9).toFixed(2)); gB.setAttribute('dx', (-v * 9).toFixed(2));
   const skew = gsap.utils.clamp(-14, 14, v * 6), sx = 1 + Math.min(.12, a * .05), sy = 1 - Math.min(.06, a * .025);
-  medias.forEach(m => { m.style.filter = 'url(#ghost)'; m.style.transform = `skewX(${skew}deg) scale(${sx},${sy})`; });
+  const tr = (v * 10).toFixed(1), sh = `${tr}px 0 0 rgba(255,22,32,.55), ${-tr}px 0 0 rgba(40,170,255,.45)`;
+  medias.forEach(m => { m.style.transform = `skewX(${skew}deg) scale(${sx},${sy})`; m.style.boxShadow = sh; });
 });
 
 /* process: slate claps → storyboard draws → panel becomes the real shot → shot shrinks into the edit */

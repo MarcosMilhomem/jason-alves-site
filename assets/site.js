@@ -28,6 +28,26 @@
     row.querySelector('.reel-track').innerHTML = set(false) + set(true);
     if (r % 2) row.classList.add('rev');
   });
+  // Rolar a página acelera as linhas; quando a rolagem para, elas voltam ao ritmo normal
+  var tracks = [].slice.call(document.querySelectorAll('.reel-track'));
+  if (tracks.length && !reduce && document.getAnimations){
+    var rate = 1, target = 1, lastY = window.scrollY, lastT = performance.now(), ticking = false;
+    var anims = function(){ var a = []; tracks.forEach(function(t){ a = a.concat(t.getAnimations()); }); return a; };
+    var loop = function(){
+      target += (1 - target) * 0.06;
+      rate += (target - rate) * 0.18;
+      anims().forEach(function(a){ a.playbackRate = rate; });
+      if (Math.abs(rate - 1) > 0.01 || Math.abs(target - 1) > 0.01) requestAnimationFrame(loop);
+      else { anims().forEach(function(a){ a.playbackRate = 1; }); rate = target = 1; ticking = false; }
+    };
+    window.addEventListener('scroll', function(){
+      var now = performance.now(), dy = Math.abs(window.scrollY - lastY), dt = Math.max(16, now - lastT);
+      lastY = window.scrollY; lastT = now;
+      target = Math.max(target, Math.min(7, 1 + dy / dt * 2.2));
+      if (!ticking){ ticking = true; requestAnimationFrame(loop); }
+    }, {passive:true});
+  }
+
   // nos cards repetidos, os botões não entram na navegação por teclado
   document.querySelectorAll('.reel-set[aria-hidden="true"] button').forEach(function(b){ b.tabIndex = -1; });
 
@@ -96,22 +116,36 @@
   document.querySelectorAll('[data-wa]').forEach(function(a){ a.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(a.getAttribute('data-wa')); });
 
   var brief = document.getElementById('brief'), send = document.getElementById('send');
+  function txtOf(id){ var s = document.getElementById(id); return s.options[s.selectedIndex].text; }
   function upd(){
     if (!brief) return;
-    var d = new FormData(brief);
-    var txt = 'Olá, Jason! Aqui é ' + (d.get('nome') || '—') + '.\nProjeto: ' + d.get('tipo') + '\nSegmento: ' + d.get('segmento') + '\n\n' + (d.get('msg') || '');
+    var v = function(id){ return document.getElementById(id).value.trim(); };
+    var txt = 'Olá, Jason!' + (v('f-name') ? ' Meu nome é ' + v('f-name') + (v('f-brand') ? ', da ' + v('f-brand') : '') + '.' : (v('f-brand') ? ' Falo pela ' + v('f-brand') + '.' : ''))
+      + ' Quero fazer ' + txtOf('f-tipo') + ' na área de ' + txtOf('f-seg') + (v('f-when') ? ', para ' + v('f-when') : '') + '.'
+      + (v('f-msg') ? '\n\nA ideia: ' + v('f-msg') : '');
     send.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(txt);
   }
   if (brief){
     brief.addEventListener('input', upd); brief.addEventListener('change', upd);
     brief.addEventListener('submit', function(e){ e.preventDefault(); }); upd();
-    // "Orçamento" em cada serviço já marca o tipo de projeto no formulário
+    // Clicar num serviço ou num segmento já preenche essa parte da frase
     document.addEventListener('click', function(e){
-      var a = e.target.closest('[data-tipo]'); if (!a) return;
-      var r = brief.querySelector('input[name="tipo"][value="' + a.getAttribute('data-tipo') + '"]');
-      if (r){ r.checked = true; upd(); }
+      var a = e.target.closest('[data-tipo],[data-seg]'); if (!a) return;
+      if (a.hasAttribute('data-tipo')) document.getElementById('f-tipo').value = a.getAttribute('data-tipo');
+      if (a.hasAttribute('data-seg')) document.getElementById('f-seg').value = a.getAttribute('data-seg');
+      upd();
     });
   }
+
+  /* ---------- serviços: o vermelho entra pelo lado de onde o mouse veio ---------- */
+  document.querySelectorAll('.svc a').forEach(function(a){
+    var side = function(e){ var r = a.getBoundingClientRect(); return (e.clientY - r.top) < r.height / 2 ? '0%' : '100%'; };
+    a.addEventListener('mouseenter', function(e){
+      if (!a.classList.contains('on')) a.style.setProperty('--from', side(e));
+      a.classList.add('on');
+    });
+    a.addEventListener('mouseleave', function(e){ a.style.setProperty('--from', side(e)); a.classList.remove('on'); });
+  });
 
   // Barra de WhatsApp no celular some quando o contato está na tela
   var mbar = document.getElementById('mbar'), contato = document.getElementById('contato');

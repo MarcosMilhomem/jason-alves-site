@@ -31,26 +31,22 @@
 
 <main>
 <section class="hero dark" id="topo">
+  <video class="hero-bg" id="heroVideo" src="/media/hero-wide.mp4" poster="/media/hero-wide.jpg" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
   <div class="wrap">
-    <div>
-      <span class="eyebrow"><span class="rec" aria-hidden="true"></span>Jason Alves · Filmmaker</span>
-      <h1>Vídeos que colocam a sua marca <em>em movimento.</em></h1>
-      <p class="lead">Publicidade, reels e filmes de marca com direção, câmera e montagem. Do roteiro ao arquivo final, num único profissional.</p>
-      <div class="cta">
-        <a class="btn btn-red" href="#contato">Pedir orçamento
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-ghost" href="#trabalhos">Ver trabalhos</a>
+    <h1 class="hero-name">Jason<br>Alves<i>.</i></h1>
+    <div class="hero-foot">
+      <div>
+        <p class="lead"><strong>Vídeos que colocam a sua marca <em>em movimento.</em></strong> Publicidade, reels e filmes de marca com direção, câmera e montagem, do roteiro ao arquivo final.</p>
+        <div class="cta">
+          <a class="btn btn-red" href="#contato">Pedir orçamento
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="#trabalhos">Ver trabalhos</a>
+        </div>
       </div>
-      <p class="formats"><span>Reels 9:16</span><span>Comerciais de 15″ a 60″</span><span>Filmes de marca</span><span>Videoclipes</span></p>
+      <button class="hero-play" type="button" data-play="/media/recanto.mp4" data-title="Forró de Respeito · Recanto Nordestino">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg></span>
+        <span><b>Forró de Respeito</b><small>Assistir com som</small></span></button>
     </div>
-    <figure class="reel">
-      <div class="reel-frame">
-        <video id="heroVideo" src="/media/recanto-loop.mp4" poster="/media/recanto-poster.jpg" muted loop playsinline autoplay preload="auto" aria-label="Trecho do filme Forró de Respeito"></video>
-        <button class="reel-play" type="button" data-play="/media/recanto.mp4" data-title="Forró de Respeito · Recanto Nordestino">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg>Assistir com som</button>
-      </div>
-      <figcaption><b>Forró de Respeito</b> · Recanto Nordestino · Reels 9:16</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -78,11 +74,11 @@
       <p>Uma equipe enxuta, com a mesma pessoa cuidando da direção, da câmera e da montagem.</p>
     </div>
     <ul class="svc">
-      <li><h3>Publicidade</h3><p>Comerciais para TV, internet e redes sociais, do roteiro à finalização.</p><span>15″ · 30″ · 60″</span><a class="ask" href="#contato" data-tipo="Publicidade">Orçamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-      <li><h3>Reels e vertical</h3><p>Vídeos curtos pensados para prender a atenção nos primeiros segundos.</p><span>9:16 · Reels e stories</span><a class="ask" href="#contato" data-tipo="Reels">Orçamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-      <li><h3>Filme de marca</h3><p>A história da sua empresa contada com cuidado de cinema.</p><span>2 a 4 min</span><a class="ask" href="#contato" data-tipo="Filme de marca">Orçamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-      <li><h3>Videoclipe</h3><p>Narrativo ou de performance, com direção e fotografia.</p><span>Música</span><a class="ask" href="#contato" data-tipo="Videoclipe">Orçamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
-      <li><h3>Direção de fotografia</h3><p>Diárias de câmera e luz para produtoras e agências.</p><span>Diárias</span><a class="ask" href="#contato" data-tipo="Direção de fotografia">Orçamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#contato" data-tipo="Publicidade" aria-label="Pedir orçamento de Publicidade"><h3>Publicidade</h3><p>Comerciais para TV, internet e redes sociais, do roteiro à finalização.</p><span class="fmt">15″ · 30″ · 60″</span><span class="go" aria-hidden="true">Orçamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a></li>
+      <li><a href="#contato" data-tipo="Reels" aria-label="Pedir orçamento de Reels e vertical"><h3>Reels e vertical</h3><p>Vídeos curtos pensados para prender a atenção nos primeiros segundos.</p><span class="fmt">9:16 · Reels e stories</span><span class="go" aria-hidden="true">Orçamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a></li>
+      <li><a href="#contato" data-tipo="Filme de marca" aria-label="Pedir orçamento de Filme de marca"><h3>Filme de marca</h3><p>A história da sua empresa contada com cuidado de cinema.</p><span class="fmt">2 a 4 min</span><span class="go" aria-hidden="true">Orçamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a></li>
+      <li><a href="#contato" data-tipo="Videoclipe" aria-label="Pedir orçamento de Videoclipe"><h3>Videoclipe</h3><p>Narrativo ou de performance, com direção e fotografia.</p><span class="fmt">Música</span><span class="go" aria-hidden="true">Orçamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a></li>
+      <li><a href="#contato" data-tipo="Direção de fotografia" aria-label="Pedir orçamento de Direção de fotografia"><h3>Direção de fotografia</h3><p>Diárias de câmera e luz para produtoras e agências.</p><span class="fmt">Diárias</span><span class="go" aria-hidden="true">Orçamento<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a></li>
     </ul>
   </div>
 </section>
@@ -94,19 +90,31 @@
       <p>Três etapas, com a sua aprovação antes de cada uma começar.</p>
     </div>
     <ol class="steps">
-      <li><span class="n">01</span><h3>Pré-produção</h3><p>Roteiro, decupagem, referências de luz e cor, locação e elenco. Você aprova cada quadro antes de a câmera ligar.</p><p class="get"><b>Você recebe</b>Roteiro, storyboard e plano de filmagem para aprovar.</p></li>
-      <li><span class="n">02</span><h3>Filmagem</h3><p>Câmera de cinema, luz desenhada para cada cena e uma equipe pequena, para todo mundo ficar à vontade na frente da lente.</p><p class="get"><b>Você recebe</b>As diárias de filmagem com direção, câmera e luz.</p></li>
-      <li><span class="n">03</span><h3>Pós-produção</h3><p>Montagem, cor, som e trilha. Entrega em todos os formatos da campanha, do cinema ao story.</p><p class="get"><b>Você recebe</b>Os vídeos finais em 9:16, 16:9, 4:5 ou 1:1, prontos para publicar.</p></li>
+      <li><span class="n">01</span><h3>Pré-produção</h3><p>Roteiro, decupagem, referências de luz e cor, locação e elenco. Você aprova cada quadro antes de a câmera ligar.</p></li>
+      <li><span class="n">02</span><h3>Filmagem</h3><p>Câmera de cinema, luz desenhada para cada cena e uma equipe pequena, para todo mundo ficar à vontade na frente da lente.</p></li>
+      <li><span class="n">03</span><h3>Pós-produção</h3><p>Montagem, cor, som e trilha. Entrega em todos os formatos da campanha, do cinema ao story.</p></li>
     </ol>
   </div>
 </section>
 
-<div class="band" role="region" aria-label="Segmentos">
+<section class="band" aria-labelledby="band-t">
   <div class="wrap">
-    <span class="eyebrow">Para quem eu filmo</span>
-    <ul><li>Gastronomia</li><li>Hotelaria</li><li>Estética</li><li>Moda</li><li>Saúde</li><li>Imobiliário</li><li>Eventos</li><li>Música</li></ul>
+    <div class="band-head">
+      <h2 id="band-t">Para quem<br>eu filmo</h2>
+      <p>Marcas que vendem experiência e precisam que ela apareça na tela. Escolha a sua área e o pedido de orçamento já sai com ela.</p>
+    </div>
+    <ul class="segs">
+      <li><a href="#contato" data-seg="Gastronomia"><span class="n">01</span><b>Gastronomia</b><small>Restaurantes, bares e food service</small></a></li>
+      <li><a href="#contato" data-seg="Hotelaria e turismo"><span class="n">02</span><b>Hotelaria</b><small>Hotéis, pousadas e turismo</small></a></li>
+      <li><a href="#contato" data-seg="Estética e beleza"><span class="n">03</span><b>Estética</b><small>Clínicas, salões e beleza</small></a></li>
+      <li><a href="#contato" data-seg="Moda"><span class="n">04</span><b>Moda</b><small>Marcas, coleções e lookbooks</small></a></li>
+      <li><a href="#contato" data-seg="Saúde e bem-estar"><span class="n">05</span><b>Saúde</b><small>Consultórios e bem-estar</small></a></li>
+      <li><a href="#contato" data-seg="Imobiliário"><span class="n">06</span><b>Imobiliário</b><small>Lançamentos e decorados</small></a></li>
+      <li><a href="#contato" data-seg="Eventos"><span class="n">07</span><b>Eventos</b><small>Shows, festas e corporativo</small></a></li>
+      <li><a href="#contato" data-seg="Música"><span class="n">08</span><b>Música</b><small>Artistas, clipes e turnês</small></a></li>
+    </ul>
   </div>
-</div>
+</section>
 
 <section class="faq dark" id="duvidas">
   <div class="wrap">
@@ -148,33 +156,27 @@
           <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
       </ul>
     </div>
-    <form class="brief" id="brief" novalidate>
-      <div class="field"><label for="f-name">Nome e marca</label><input id="f-name" name="nome" autocomplete="name" placeholder="Ana, da Maré Hotéis"></div>
-      <fieldset class="field"><legend>Tipo de projeto</legend>
-        <div class="chips">
-          <input type="radio" name="tipo" id="t1" value="Publicidade" checked><label for="t1">Publicidade</label>
-          <input type="radio" name="tipo" id="t2" value="Reels"><label for="t2">Reels</label>
-          <input type="radio" name="tipo" id="t3" value="Filme de marca"><label for="t3">Filme de marca</label>
-          <input type="radio" name="tipo" id="t4" value="Videoclipe"><label for="t4">Videoclipe</label>
-          <input type="radio" name="tipo" id="t5" value="Direção de fotografia"><label for="t5">Direção de fotografia</label>
-        </div>
-      </fieldset>
-      <fieldset class="field"><legend>Segmento</legend>
-        <div class="chips">
-          <input type="radio" name="segmento" id="s1" value="Gastronomia" checked><label for="s1">Gastronomia</label>
-          <input type="radio" name="segmento" id="s2" value="Hotelaria e turismo"><label for="s2">Hotelaria e turismo</label>
-          <input type="radio" name="segmento" id="s3" value="Estética e beleza"><label for="s3">Estética e beleza</label>
-          <input type="radio" name="segmento" id="s4" value="Moda"><label for="s4">Moda</label>
-          <input type="radio" name="segmento" id="s5" value="Saúde e bem-estar"><label for="s5">Saúde e bem-estar</label>
-          <input type="radio" name="segmento" id="s6" value="Imobiliário"><label for="s6">Imobiliário</label>
-          <input type="radio" name="segmento" id="s7" value="Eventos"><label for="s7">Eventos</label>
-          <input type="radio" name="segmento" id="s8" value="Outro"><label for="s8">Outro</label>
-        </div>
-      </fieldset>
-      <div class="field"><label for="f-msg">A ideia</label><textarea id="f-msg" name="msg" placeholder="Prazo, onde o vídeo vai passar, referências"></textarea></div>
-      <a class="btn btn-red" id="send" href="https://wa.me/5511999999999" target="_blank" rel="noopener">Enviar pelo WhatsApp
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <p class="note">Abre o WhatsApp com a mensagem já escrita.</p>
+    <form class="brief" id="brief" novalidate aria-label="Pedido de orçamento">
+      <div class="brief-bar" aria-hidden="true"><span><i class="rec"></i>Briefing</span><span>Complete a frase</span></div>
+      <p class="madlib">
+        Olá, Jason! Meu nome é
+        <label class="sr" for="f-name">Seu nome</label><input id="f-name" name="nome" autocomplete="given-name" placeholder="seu nome" size="9">,
+        da
+        <label class="sr" for="f-brand">Marca ou empresa</label><input id="f-brand" name="marca" autocomplete="organization" placeholder="sua marca" size="10">.
+        Quero fazer
+        <label class="sr" for="f-tipo">Tipo de projeto</label><span class="sel"><select id="f-tipo" name="tipo"><option value="Publicidade">um comercial</option><option value="Reels">reels</option><option value="Filme de marca">um filme de marca</option><option value="Videoclipe">um videoclipe</option><option value="Direção de fotografia">diárias de fotografia</option></select></span>
+        na área de
+        <label class="sr" for="f-seg">Segmento</label><span class="sel"><select id="f-seg" name="segmento"><option value="Gastronomia">gastronomia</option><option value="Hotelaria e turismo">hotelaria e turismo</option><option value="Estética e beleza">estética e beleza</option><option value="Moda">moda</option><option value="Saúde e bem-estar">saúde e bem-estar</option><option value="Imobiliário">imobiliário</option><option value="Eventos">eventos</option><option value="Música">música</option><option value="Outro">outra área</option></select></span>,
+        para
+        <label class="sr" for="f-when">Prazo</label><input id="f-when" name="prazo" placeholder="quando?" size="9">.
+      </p>
+      <label class="idea" for="f-msg"><span>A ideia, em poucas linhas</span>
+        <textarea id="f-msg" name="msg" rows="3" placeholder="Onde o vídeo vai passar, referências, o que precisa aparecer"></textarea></label>
+      <div class="brief-send">
+        <a class="btn btn-red" id="send" href="https://wa.me/5511999999999" target="_blank" rel="noopener">Enviar pelo WhatsApp
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="note">Abre o WhatsApp com essa mensagem já escrita.</p>
+      </div>
     </form>
   </div>
 </section>

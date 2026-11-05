@@ -29,7 +29,7 @@
     if (r % 2) row.classList.add('rev');
   });
   // Rolar a página acelera as linhas; quando a rolagem para, elas voltam ao ritmo normal
-  var tracks = [].slice.call(document.querySelectorAll('.reel-track'));
+  var tracks = [].slice.call(document.querySelectorAll('.reel-track,.seg-track'));
   if (tracks.length && !reduce && document.getAnimations){
     var rate = 1, target = 1, lastY = window.scrollY, lastT = performance.now(), ticking = false;
     var anims = function(){ var a = []; tracks.forEach(function(t){ a = a.concat(t.getAnimations()); }); return a; };
@@ -137,14 +137,11 @@
     });
   }
 
-  /* ---------- serviços: o vermelho entra pelo lado de onde o mouse veio ---------- */
-  document.querySelectorAll('.svc a').forEach(function(a){
-    var side = function(e){ var r = a.getBoundingClientRect(); return (e.clientY - r.top) < r.height / 2 ? '0%' : '100%'; };
-    a.addEventListener('mouseenter', function(e){
-      if (!a.classList.contains('on')) a.style.setProperty('--from', side(e));
-      a.classList.add('on');
-    });
-    a.addEventListener('mouseleave', function(e){ a.style.setProperty('--from', side(e)); a.classList.remove('on'); });
+  /* ---------- botões vermelhos: o branco entra pelo ponto onde o mouse entrou e sai por onde ele saiu ---------- */
+  document.querySelectorAll('.fx').forEach(function(b){
+    var at = function(e){ var r = b.getBoundingClientRect(); b.style.setProperty('--x', (e.clientX - r.left) + 'px'); b.style.setProperty('--y', (e.clientY - r.top) + 'px'); b.style.setProperty('--d', (Math.hypot(r.width, r.height) * 2.1) + 'px'); };
+    b.addEventListener('mouseenter', function(e){ at(e); b.classList.add('in'); });
+    b.addEventListener('mouseleave', function(e){ at(e); b.classList.remove('in'); });
   });
 
   // Barra de WhatsApp no celular some quando o contato está na tela

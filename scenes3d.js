@@ -222,5 +222,76 @@ class Slate3D {
   }
 }
 
-window.JA3D = {Iris3D, Slate3D, THREE};
+
+/* ------------------------------------------------------------------ PARTICLE LOGO
+   Samples the logo PNG into points. Each point starts scattered, swirls in and settles on its
+   spot in the mark (red dot stays red). One draw call, ~7k points, driven by a single uniform. */
+class ParticleLogo {
+  constructor(canvas, src, logoW, logoH, W, H){
+    this.W = W; this.H = H; this.logoW = logoW; this.logoH = logoH;
+    const R = this.renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:false, powerPreference:'high-performance'});
+    R.setPixelRatio(DPR); R.setSize(W, H, false); R.setClearColor(0x000000, 0);
+    this.scene = new THREE.Scene();
+    this.camera = new THREE.OrthographicCamera(-W/2, W/2, H/2, -H/2, -10, 10);
+    this.u = {uP:{value:0}, uT:{value:0}, uPR:{value:DPR}, uA:{value:1}};
+    this.ready = new Promise((res, rej) => { const im = new Image(); im.onload = () => { try { this.build(im); res(); } catch(e){ rej(e); } }; im.onerror = rej; im.src = src; });
+  }
+  build(im){
+    const sw = 190, sh = Math.round(sw * im.naturalHeight / im.naturalWidth);
+    const c = document.createElement('canvas'); c.width = sw; c.height = sh;
+    const x = c.getContext('2d'); x.drawImage(im, 0, 0, sw, sh);
+    const d = x.getImageData(0, 0, sw, sh).data, src = [];
+    for (let y = 0; y < sh; y++) for (let xx = 0; xx < sw; xx++){
+      const i = (y * sw + xx) * 4; if (d[i+3] > 140) src.push(xx, y, (d[i] > 150 && d[i+1] < 110) ? 1 : 0);
+    }
+    let n = src.length / 3; const MAX = 7000, keep = Math.min(1, MAX / n);
+    const pos = [], start = [], rnd = [], col = [];
+    const reach = Math.max(this.W, this.H) * .5;
+    for (let k = 0; k < n; k++){
+      if (Math.random() > keep) continue;
+      const px = src[k*3] + Math.random() - .5, py = src[k*3+1] + Math.random() - .5;
+      pos.push((px / sw - .5) * this.logoW, (.5 - py / sh) * this.logoH, 0);
+      const a = Math.random() * Math.PI * 2, r = Math.sqrt(Math.random()) * reach;
+      start.push(Math.cos(a) * r, Math.sin(a) * r);
+      rnd.push(Math.random(), Math.random(), Math.random());
+      col.push(src[k*3+2]);
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    g.setAttribute('aStart', new THREE.Float32BufferAttribute(start, 2));
+    g.setAttribute('aR', new THREE.Float32BufferAttribute(rnd, 3));
+    g.setAttribute('aC', new THREE.Float32BufferAttribute(col, 1));
+    const m = new THREE.ShaderMaterial({
+      uniforms: this.u, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending,
+      vertexShader: `attribute vec2 aStart; attribute vec3 aR; attribute float aC;
+        uniform float uP, uT, uPR; varying float vC; varying float vA;
+        void main(){
+          float t = clamp((uP - aR.x * .55) / .45, 0., 1.);
+          float e = t * t * (3. - 2. * t);
+          vec2 tgt = position.xy, d = aStart - tgt;
+          float ang = (1. - e) * (1.6 + aR.z * 2.2);
+          float s = sin(ang), c = cos(ang);
+          vec2 q = vec2(d.x * c - d.y * s, d.x * s + d.y * c) * (1. - e);
+          vec2 p = tgt + q + vec2(sin(uT * 1.7 + aR.z * 20.), cos(uT * 1.3 + aR.y * 17.)) * .55 * e;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 0., 1.);
+          gl_PointSize = (1.2 + aR.y * 1.5 + (1. - e) * 1.4) * uPR;
+          vC = aC; vA = .3 + .7 * e;
+        }`,
+      fragmentShader: `varying float vC; varying float vA; uniform float uA;
+        void main(){
+          float r = length(gl_PointCoord - .5); if (r > .5) discard;
+          float a = smoothstep(.5, .12, r) * vA * uA;
+          vec3 col = mix(vec3(.96, .96, .95), vec3(1., .09, .125), vC);
+          gl_FragColor = vec4(col * a, a);
+        }`
+    });
+    this.points = new THREE.Points(g, m); this.points.frustumCulled = false; this.scene.add(this.points);
+    this.count = pos.length / 3;
+  }
+  setP(v){ this.u.uP.value = v; this.render(); }
+  render(){ this.u.uT.value = performance.now() / 1000; this.renderer.render(this.scene, this.camera); }
+  dispose(){ try { this.points.geometry.dispose(); this.points.material.dispose(); this.renderer.dispose(); this.renderer.forceContextLoss(); } catch(e){} }
+}
+
+window.JA3D = {Iris3D, Slate3D, ParticleLogo, THREE};
 window.dispatchEvent(new Event('ja3d-ready'));

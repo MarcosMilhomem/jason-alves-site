@@ -24,6 +24,7 @@
   var rows = document.querySelectorAll('[data-reel-row]');
   rows.forEach(function(row, r){
     var items = r % 2 ? LIST.slice().reverse() : LIST.slice(Math.ceil(LIST.length / 2)).concat(LIST.slice(0, Math.ceil(LIST.length / 2)));
+    items = items.concat(items); // cada metade leva a lista duas vezes, para cobrir telas largas
     var set = function(hidden){ return '<ul class="reel-set"' + (hidden ? ' aria-hidden="true"' : '') + '>' + items.map(function(w){ return card(w, {hidden:hidden}); }).join('') + '</ul>'; };
     row.querySelector('.reel-track').innerHTML = set(false) + set(true);
     if (r % 2) row.classList.add('rev');

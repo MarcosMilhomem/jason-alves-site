@@ -10,6 +10,11 @@
 <meta property="og:description" content="Publicidade, reels, filmes de marca e videoclipes.">
 <meta property="og:image" content="/media/recanto-poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<script>
+/* Chaves de teste. Cada branch de pré-visualização muda só estas linhas. */
+window.JA_FEATURES = {particles:false, fan:true, numbers:true, index:false, clock:false, warp:true};
+Object.keys(window.JA_FEATURES).forEach(function(k){ if (window.JA_FEATURES[k]) document.documentElement.classList.add('f-' + k); });
+</script>
 <title>Jason Alves Filmes</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Jason Alves — filmmaker. Publicidade, reels, filmes de marca e videoclipes.">
@@ -79,7 +84,10 @@ em{font-family:var(--f-sans);font-style:italic;font-weight:600;color:var(--rec);
 .loader svg{position:absolute;inset:0;width:100%;height:100%}
 .blade{fill:url(#bladeGrad);stroke:#34322e;stroke-width:.3}
 .loader-center{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px}
+.loader-mark{position:relative;display:block}
 .loader-logo{width:min(132px,32vw);height:auto;display:block}
+.pcanvas{position:absolute;left:50%;top:50%;width:560px;height:560px;max-width:none;transform:translate(-50%,-50%);pointer-events:none}
+html:not(.f-particles) .pcanvas{display:none}
 .loader-rec{display:flex;align-items:center;gap:10px;color:var(--paper);font-size:14px;font-variant-numeric:tabular-nums}
 .loader-bar{width:min(220px,50vw);height:1px;background:rgba(245,245,244,.18);overflow:hidden}
 .loader-bar b{display:block;height:100%;background:var(--rec);transform:scaleX(0);transform-origin:left}
@@ -111,6 +119,12 @@ a:hover .roll>span{transform:translateY(-1.3em)}
 .hero-meta .label{text-align:right;color:rgba(245,245,244,.7);line-height:1.7}
 .hero-frame{--fh:min(58vh,620px);position:absolute;left:50%;top:15vh;z-index:2;height:var(--fh);width:calc(var(--fh) * 9 / 16);margin-left:calc(var(--fh) * -9 / 32);overflow:hidden;border-radius:4px;box-shadow:0 40px 120px -20px rgba(0,0,0,.7)}
 .hero-frame .open{position:absolute;inset:0;z-index:4}
+/* fan: stills stacked behind the main frame, opened like a hand of cards */
+.hero-fan{--fh:min(58vh,620px);position:absolute;left:50%;top:15vh;z-index:2;height:var(--fh);width:calc(var(--fh) * 9 / 16);margin-left:calc(var(--fh) * -9 / 32);pointer-events:none}
+.hero-fan .fc{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:4px;box-shadow:0 30px 70px -22px rgba(0,0,0,.65);transform-origin:50% 100%;will-change:transform}
+html:not(.f-fan) .hero-fan{display:none}
+.clk{display:block;font-variant-numeric:tabular-nums}
+html:not(.f-clock) .clk{display:none}
 .hero-name{position:absolute;left:0;right:0;bottom:0;z-index:1;margin:0 0 -.1em;padding-left:var(--gl);padding-right:var(--gr);line-height:.8;pointer-events:none}
 .hero-fit{display:inline-block;font-family:var(--f-display);font-weight:400;text-transform:uppercase;white-space:nowrap;letter-spacing:-.035em;color:var(--paper);font-size:14vw;line-height:.84}
 .hero-fit i{font-style:normal;color:var(--rec)}
@@ -124,7 +138,7 @@ a:hover .roll>span{transform:translateY(-1.3em)}
 .hero-claim{margin:0;max-width:260px;font-style:italic;font-weight:500;font-size:clamp(17px,1.4vw,22px);line-height:1.2;color:var(--paper)}
 @media (max-width:700px){
   .hero-meta .label{display:none}
-  .hero-frame{--fh:min(50vh,460px);top:calc(170px + env(safe-area-inset-top,0px))}
+  .hero-frame,.hero-fan{--fh:min(50vh,460px);top:calc(170px + env(safe-area-inset-top,0px))}
 }
 
 /* Manifesto */
@@ -197,6 +211,39 @@ a:hover .roll>span{transform:translateY(-1.3em)}
 .marquee{display:flex;width:max-content}
 .marquee-set{display:flex;align-items:center;gap:64px;padding-right:64px}
 .marquee-set span{font-size:clamp(22px,2.4vw,36px);letter-spacing:-.03em;white-space:nowrap;color:var(--muted)}
+
+/* Numbers: giant formats with the film showing through the digits */
+.nums{position:relative;display:grid;isolation:isolate;--rh:clamp(150px,21vw,360px);--cp:0px;padding-block:clamp(40px,7vh,90px) clamp(70px,10vh,120px);background:var(--paper);color:var(--ink)}
+.nums>*{grid-area:1/1;min-width:0}
+.nums-video{position:relative;overflow:hidden}
+.nums-video .footage{inset:-8% 0}
+.nums-video::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.1);pointer-events:none}
+.nums-mask{background:var(--paper);color:#000;mix-blend-mode:lighten;padding:0 var(--gr) 0 var(--gl)}
+.nums-cap{position:relative;z-index:2;padding:0 calc(var(--gr) + 96px) 0 var(--gl);pointer-events:none}
+.nhead{height:64px}
+.nrow{height:calc(var(--rh) + var(--cp));display:flex}
+.nums-mask .nrow{align-items:flex-start}
+.nums-cap .nrow{align-items:flex-end;justify-content:flex-end}
+.nn{display:block;font-family:var(--f-display);font-size:var(--rh);line-height:.8;letter-spacing:-.04em;margin-top:.06em;white-space:nowrap}
+.ncap{margin:0;max-width:30ch;text-align:right;font-size:clamp(15px,1.25vw,19px);line-height:1.35;color:var(--ink);padding-bottom:.4vw}
+.ncap b{display:block;font-family:var(--f-display);font-weight:400;font-size:clamp(13px,1.1vw,16px);text-transform:uppercase;margin-bottom:6px;color:var(--rec)}
+html:not(.f-numbers) .nums{display:none}
+@media (max-width:899px){.nums-cap{padding-right:var(--gr)}}
+@media (max-width:700px){.nums{--rh:22vw;--cp:68px}.nums-cap .nrow{justify-content:flex-start;align-items:flex-end}.ncap{text-align:left;max-width:34ch;padding-bottom:6px}}
+
+/* Section index: dots on the right edge, label of the current section */
+.sidx{position:fixed;right:max(18px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:75;display:flex;flex-direction:column;gap:14px;align-items:flex-end;color:var(--paper);transition:color .35s}
+html.tone-light .sidx{color:var(--ink)}
+.sidx a{display:flex;align-items:center;gap:10px;font-size:13px;line-height:1;opacity:.55;transition:opacity .3s}
+.sidx a span{opacity:0;transform:translateX(8px);transition:opacity .3s,transform .4s var(--ease);white-space:nowrap}
+.sidx a i{width:7px;height:7px;border-radius:50%;border:1px solid currentColor;transition:background .3s,transform .3s,border-color .3s}
+.sidx a:hover,.sidx a.on{opacity:1}
+.sidx a:hover span,.sidx a.on span{opacity:1;transform:none}
+.sidx a.on i{background:var(--rec);border-color:var(--rec);transform:scale(1.35)}
+html:not(.f-index) .sidx{display:none}
+@media (max-width:899px){.sidx{display:none}}
+#warp{position:fixed;inset:0;width:100%;height:100%;z-index:60;pointer-events:none}
+html:not(.f-warp) #warp{display:none}
 
 /* Process: slate → storyboard → viewfinder → edit timeline */
 .process{position:relative;height:100vh;height:100svh;min-height:600px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:center;gap:6vw;overflow:hidden;padding-top:60px}
@@ -366,7 +413,7 @@ form.brief{display:flex;flex-direction:column;gap:32px}
 <div class="loader" aria-hidden="true">
   <svg viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid slice"><g class="blades"></g></svg>
   <div class="loader-center">
-    <img class="loader-logo" src="media/logo-light.png" alt="">
+    <div class="loader-mark"><canvas class="pcanvas" aria-hidden="true"></canvas><img class="loader-logo" src="media/logo-light.png" alt=""></div>
     <div class="loader-rec"><span class="dot blink"></span><span id="ltc">00:00:00:00</span></div>
     <div class="loader-bar"><b></b></div>
   </div>
@@ -383,6 +430,16 @@ form.brief{display:flex;flex-direction:column;gap:32px}
   <a href="#contato" data-link="#contato" class="cta"><span class="roll"><span data-t="Contato">Contato</span></span></a>
 </header>
 
+<canvas id="warp" aria-hidden="true"></canvas>
+<nav class="sidx" aria-label="Seções">
+  <a href="#topo" data-link="#topo" data-sec="topo"><span>Início</span><i></i></a>
+  <a href="#reel" data-link="#reel" data-sec="reel"><span>Reel</span><i></i></a>
+  <a href="#trabalhos" data-link="#trabalhos" data-sec="trabalhos"><span>Trabalhos</span><i></i></a>
+  <a href="#processo" data-link="#processo" data-sec="processo"><span>Processo</span><i></i></a>
+  <a href="#servicos" data-link="#servicos" data-sec="servicos"><span>Serviços</span><i></i></a>
+  <a href="#contato" data-link="#contato" data-sec="contato"><span>Contato</span><i></i></a>
+</nav>
+
 <div id="smooth-wrapper"><div id="smooth-content">
 <main>
 
@@ -390,8 +447,9 @@ form.brief{display:flex;flex-direction:column;gap:32px}
   <img class="hero-bg" src="media/hero-bg.jpg" alt="" aria-hidden="true">
   <div class="hero-meta wrap">
     <p class="hero-claim">Filmes que a gente sente antes de entender.</p>
-    <span class="label">Filmmaker<br>Publicidade · Reels · Filmes de marca</span>
+    <span class="label">Filmmaker<br>Publicidade · Reels · Filmes de marca<span class="clk">Brasil · <span id="clk">--:--:--</span></span></span>
   </div>
+  <div class="hero-fan" aria-hidden="true"><img class="fc" src="media/fan-3.jpg" alt=""><img class="fc" src="media/fan-9.jpg" alt=""><img class="fc" src="media/fan-13.jpg" alt=""><img class="fc" src="media/fan-19.jpg" alt=""></div>
   <div class="hero-frame">
     <div class="footage" data-video="media/recanto-loop.mp4" data-poster="media/recanto-poster.jpg"></div>
     <div class="hud label" aria-hidden="true">
@@ -436,6 +494,22 @@ form.brief{display:flex;flex-direction:column;gap:32px}
 </section>
 
 <section class="clients" aria-label="Clientes"><div class="marquee"></div></section>
+
+<section class="nums" id="numeros" aria-label="Formatos de entrega">
+  <div class="nums-video" aria-hidden="true"><div class="footage" data-video="media/recanto-loop.mp4" data-poster="media/recanto-poster.jpg"></div></div>
+  <div class="nums-mask" aria-hidden="true">
+    <div class="nhead"></div>
+    <div class="nrow"><span class="nn">9:16</span></div>
+    <div class="nrow"><span class="nn">16:9</span></div>
+    <div class="nrow"><span class="nn">24</span></div>
+  </div>
+  <div class="nums-cap">
+    <div class="nhead"><span class="label">Formatos e ritmo</span></div>
+    <div class="nrow"><p class="ncap"><b>Reels e stories</b>O formato que a sua audiência já vive, pensado desde o primeiro quadro.</p></div>
+    <div class="nrow"><p class="ncap"><b>Campanhas e filmes de marca</b>Telas grandes, TV e cinema, com fotografia e cor de longa.</p></div>
+    <div class="nrow"><p class="ncap"><b>Quadros por segundo</b>O ritmo do cinema em cada plano, em qualquer formato de entrega.</p></div>
+  </div>
+</section>
 
 <section class="process dark wrap" id="processo" aria-labelledby="pc">
   <h2 id="pc" class="label" style="margin:0;font-weight:400">Processo</h2>
@@ -632,6 +706,7 @@ form.brief{display:flex;flex-direction:column;gap:32px}
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script>
+const FEAT = window.JA_FEATURES || {};
 /* CONTENT — troque pelos projetos reais. Adicione `video: "filmes/arquivo.mp4"` para usar o filme real. */
 const PROJECTS = [
   {id:'recanto', title:'Forró de Respeito', client:'Recanto Nordestino', tag:'Reels · 9:16', vertical:true,
@@ -1161,7 +1236,7 @@ gsap.set(heroSplit.chars, {yPercent:110});
 function heroIntro(){
   document.body.classList.remove('is-loading');
   const claim = SplitText.create('.hero-claim', {type:'lines', mask:'lines'});
-  return gsap.timeline()
+  const tl = gsap.timeline()
     .to(heroSplit.chars, {yPercent:0, duration:1.4, ease:'expo.out', stagger:.045}, .1)
     .from('.hero-frame', {clipPath:'inset(50% 0% 50% 0% round 4px)', duration:1.3, ease:'expo.inOut'}, 0)
     .from('.hero-frame .footage', {scale:1.25, duration:1.6, ease:'expo.out'}, 0)
@@ -1169,6 +1244,15 @@ function heroIntro(){
     .from('.hero-meta .label', {opacity:0, duration:.8}, .7)
     .from('.hud .c', {scale:1.8, opacity:0, duration:.9, ease:'expo.out', stagger:.05}, .6)
     .from('.hud .rec', {opacity:0, duration:.6}, .8);
+  if (FEAT.fan){
+    const fcs = gsap.utils.toArray('.hero-fan .fc'), k = innerWidth < 700 ? .6 : 1, ang = [-15, -7, 8, 16].map(a => a * k);
+    tl.fromTo(fcs, {rotation:0, y:36, opacity:0}, {rotation:i => ang[i], y:0, opacity:1, duration:1.5, ease:'expo.out', stagger:.08}, .55);
+    if (fine){
+      const qx = fcs.map(c => gsap.quickTo(c, 'x', {duration:.9, ease:'power3'})), depth = [-1, -.5, .5, 1];
+      document.querySelector('.hero').addEventListener('pointermove', e => { const nx = e.clientX / innerWidth - .5; qx.forEach((q, i) => q(nx * 46 * depth[i])); });
+    }
+  }
+  return tl;
 }
 const loader = document.querySelector('.loader');
 if (reduce){ loader.remove(); heroIntro().progress(1); }
@@ -1181,7 +1265,23 @@ else {
   const rec = {f:0};
   gsap.set('.nav', {autoAlpha:0});
   const lt = gsap.timeline({delay:.15, paused:true});
-  ready3d.then(() => { attach3D(); lt.play(); });
+  let pl = null; const plState = {p:0};
+  ready3d.then(async () => {
+    attach3D();
+    if (FEAT.particles && window.JA3D && JA3D.ParticleLogo){
+      try {
+        pl = new JA3D.ParticleLogo(loader.querySelector('.pcanvas'), 'media/logo-light.png', lLogo.offsetWidth, lLogo.offsetHeight, 560, 560);
+        await pl.ready; pl.setP(0);
+        gsap.set(lLogo, {opacity:0});
+        lt.to(plState, {p:1, duration:1.65, ease:'power2.inOut', onUpdate:() => pl.setP(plState.p)}, .1)
+          .to(lLogo, {opacity:1, duration:.4, ease:'power1.out'}, 1.55)
+          .to(pl.u.uA, {value:0, duration:.45, onUpdate:() => pl.render()}, 1.6);
+        gsap.ticker.add(plTick);
+      } catch(e){ console.warn('particles off', e); pl = null; gsap.set(lLogo, {opacity:1}); }
+    }
+    lt.play();
+  });
+  const plTick = () => { if (pl && plState.p >= 1 && pl.u.uA.value > .01) pl.render(); };
   lt.from(lLogo, {clipPath:'inset(100% 0% 0% 0%)', y:24, duration:1, ease:'expo.out'}, 0)
     .from('.loader-rec, .loader-bar', {opacity:0, y:10, duration:.6, stagger:.08}, .35)
     .to('.loader-bar b', {scaleX:1, duration:1.7, ease:'power1.inOut'}, .5)
@@ -1196,9 +1296,9 @@ else {
     .to('.nav', {autoAlpha:1, duration:.5}, 3.35)
     .add(heroIntro, 2.9)
     .to(lLogo, {opacity:0, duration:.2}, 3.6)
-    .add(() => loader.remove());
+    .add(() => { gsap.ticker.remove(plTick); pl && pl.dispose(); loader.remove(); });
 }
-gsap.to('.hero-frame', {y:() => -innerHeight * .12, scale:1.08, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true, invalidateOnRefresh:true}});
+gsap.to('.hero-frame, .hero-fan', {y:() => -innerHeight * .12, scale:1.08, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true, invalidateOnRefresh:true}});
 gsap.to('.hero-name', {yPercent:-35, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
 
 /* nav colour follows the band under it (keeps the logo's red dot red) */
@@ -1210,6 +1310,7 @@ gsap.ticker.add(() => {
   let dark = true;
   if (hit && !hit.closest('.lb, .loader')){ const sec = hit.closest('section, footer'); dark = sec ? sec.classList.contains('dark') : false; }
   navEl.classList.toggle('on-light', !dark);
+  document.documentElement.classList.toggle('tone-light', !dark);
   navEl.classList.toggle('scrolled', (smoother ? smoother.scrollTop() : scrollY) > innerHeight * .85);
 });
 gsap.fromTo('.hero', {clipPath:'inset(0% 0% 0% 0% round 0px)'}, {clipPath:'inset(0% 2.5% 7% 2.5% round 24px)', ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
@@ -1463,6 +1564,45 @@ lbPlay.addEventListener('click', () => {
 });
 gsap.ticker.add(() => { if (!lbOpen) return; if (lbVid && lbVideo.duration) lbLen = lbVideo.duration; const t = lbVid ? lbVideo.currentTime : lbFoot.t % lbLen; lbTc.textContent = tc(t); lbBar.style.transform = `scaleX(${t/lbLen})`; });
 
+/* ---- novidades em teste ---- */
+if (FEAT.clock){
+  const ce = document.getElementById('clk'), f = new Intl.DateTimeFormat('pt-BR', {timeZone:'America/Sao_Paulo', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false});
+  const upd = () => { ce.textContent = f.format(new Date()); }; upd(); setInterval(upd, 1000);
+}
+if (FEAT.index){
+  const dots = [...document.querySelectorAll('.sidx a')]; let cur = '', n = 0;
+  gsap.ticker.add(() => {
+    if (++n % 8) return;
+    const hit = document.elementsFromPoint(innerWidth * .5, innerHeight * .5).find(e => e.closest('section[id], footer'));
+    let id = hit ? (hit.closest('section[id], footer').id || 'contato') : cur;
+    if (id === 'numeros') id = 'trabalhos';
+    if (id === cur) return; cur = id; dots.forEach(a => a.classList.toggle('on', a.dataset.sec === id));
+  });
+}
+if (FEAT.numbers){
+  gsap.utils.toArray('.nn').forEach(el => gsap.from(el, {yPercent:38, opacity:0, duration:1.2, ease:'expo.out', scrollTrigger:{trigger:el, start:'top 90%'}}));
+  gsap.fromTo('.nums-video .footage', {yPercent:-5}, {yPercent:5, ease:'none', scrollTrigger:{trigger:'.nums', start:'top bottom', end:'bottom top', scrub:true}});
+}
+if (FEAT.warp && !reduce){
+  /* speed lines: they appear only when the page is moving fast (scroll flicks, jumps from the menu) */
+  const wc = document.getElementById('warp'), wx = wc.getContext('2d'); let ww = 0, wh = 0, wOn = false;
+  const rs = () => { ww = wc.width = innerWidth; wh = wc.height = innerHeight; }; rs(); addEventListener('resize', rs);
+  const L = Array.from({length:80}, () => ({a:Math.random() * TAU, r:.1 + Math.random() * .9, s:.4 + Math.random() * .9, red:Math.random() < .22}));
+  gsap.ticker.add(() => {
+    const v = Math.max(0, (velAb - .4) / .6);
+    if (v < .03){ if (wOn){ wx.clearRect(0, 0, ww, wh); wOn = false; } return; }
+    wOn = true; wx.clearRect(0, 0, ww, wh);
+    const cx = ww / 2, cy = wh / 2, R = Math.hypot(cx, cy), base = document.documentElement.classList.contains('tone-light') ? '6,6,6' : '245,245,244';
+    wx.lineCap = 'round'; wx.lineWidth = 1 + v * 1.4;
+    [false, true].forEach(red => {
+      wx.strokeStyle = red ? `rgba(255,22,32,${.6 * v})` : `rgba(${base},${.38 * v})`; wx.beginPath();
+      for (const l of L){ if (l.red !== red) continue;
+        const r0 = l.r * R * .85, len = r0 * (.2 + v * .8) * l.s, c = Math.cos(l.a), s = Math.sin(l.a);
+        wx.moveTo(cx + c * r0, cy + s * r0); wx.lineTo(cx + c * (r0 + len), cy + s * (r0 + len)); }
+      wx.stroke();
+    });
+  });
+}
 document.fonts && document.fonts.ready.then(() => ScrollTrigger.refresh());
 }
 
